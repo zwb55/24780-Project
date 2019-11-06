@@ -11,8 +11,8 @@ The space position will be the top left point of player.
 
 If necessary, also set the face direction of player.
 Direction definition:
-1: up (negative y direction)
-2: down (positive y direction)
+1: up (positive y direction)
+2: down (negative y direction)
 3: left (negative x direction)
 4: right (positive x direction)
 */

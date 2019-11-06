@@ -34,10 +34,10 @@ int main(void) {
 			terminate = true;
 			break;
 		case FSKEY_W:
-			gameController.update(2);
+			gameController.update(1);
 			break;
 		case FSKEY_S:
-			gameController.update(1);
+			gameController.update(2);
 			break;
 		case FSKEY_A:
 			gameController.update(3);

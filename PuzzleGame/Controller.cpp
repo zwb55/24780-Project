@@ -20,8 +20,8 @@ Controller::Controller(int _level): player(0, 0)
 /*
 Perform update based on user input. Define the input code:
 0: No input
-1: Go up (negative y direction)
-2: Go down (positive y direction)
+1: Go up (positive y direction)
+2: Go down (negative y direction)
 3: Go left (negative x direction)
 4: Go right (positive x direction)
 5: Operation (open the door, switch the botton, etc)
@@ -31,11 +31,11 @@ void Controller::update(int code)
 	if (code != 0 && !isAvailable()) {
 		return;
 	}
-	if (code == 1 && map.isValid(player.gridX, player.gridY - 1)) {
-		player.setPosition(player.gridX, player.gridY - 1);
-	}
-	else if (code == 2 && map.isValid(player.gridX, player.gridY + 1)) {
+	if (code == 1 && map.isValid(player.gridX, player.gridY + 1)) {
 		player.setPosition(player.gridX, player.gridY + 1);
+	}
+	else if (code == 2 && map.isValid(player.gridX, player.gridY - 1)) {
+		player.setPosition(player.gridX, player.gridY - 1);
 	}
 	else if (code == 3 && map.isValid(player.gridX - 1, player.gridY)) {
 		player.setPosition(player.gridX - 1, player.gridY);
