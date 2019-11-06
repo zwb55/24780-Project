@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#include "GraphicFont.h"
 
 class GraphicFont;   // needed because GraphicFont.h includes DrawingUtilNG.h
 
@@ -44,7 +43,11 @@ namespace DrawingUtilNG {
 	// draw 3D shapes
 
 	void drawCube(vertexF v1, vertexF v2, bool sixColors = false);
+	void drawCube(double x1, double y1, double z1, double side, bool sixColors = false);
 	void drawCube(double x1, double y1, double z1, 
 		double x2, double y2, double z2, bool sixColors = false, GraphicFont* aFont = NULL);
+
+	// get random int number between left bound and right bound
+	int getRandom(int left, int right);
 
 };

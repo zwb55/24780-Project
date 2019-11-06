@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include <math.h>
+#include <time.h>
 #include "fssimplewindow.h"
 #include "ysglfontdata.h"
 #include "Camera3D.h"
 #include "OrbitingViewer.h"
 #include "DrawingUtilNG.h"
-#include "Map.h"
+#include "Controller.h"
+#include <iostream>
 
 int main(void) {
+	srand(time(NULL));
 	bool terminate = false;
 	Camera3D camera;
 	OrbitingViewer orbit;
-	Map gameMap;
+	Controller gameController;
 
 	camera.z = 10.0;
 
@@ -30,6 +33,20 @@ int main(void) {
 		case FSKEY_ESC:
 			terminate = true;
 			break;
+		case FSKEY_W:
+			gameController.update(2);
+			break;
+		case FSKEY_S:
+			gameController.update(1);
+			break;
+		case FSKEY_A:
+			gameController.update(3);
+			break;
+		case FSKEY_D:
+			gameController.update(4);
+			break;
+		default:
+			gameController.update(0);
 		}
 
 		if (0 != FsGetKeyState(FSKEY_LEFT))
@@ -65,20 +82,7 @@ int main(void) {
 		glPolygonOffset(1, 1);
 
 		// 3D drawing from here
-		gameMap.draw();
-		//glColor3ub(93, 290, 112);
-		////DrawingUtilNG::drawCube(-10.0, -10.0, -10.0, 10.0, 10.0, 10.0);
-		//DrawingUtilNG::drawCube(0, 0, 0, 20.0, 20.0, 20.0, true, &impact);
-
-		//// Set up 2D drawing
-		//glMatrixMode(GL_PROJECTION);
-		//glLoadIdentity();
-		//glOrtho(0, (float)wid - 1, (float)hei - 1, 0, -1, 1);
-
-		//glMatrixMode(GL_MODELVIEW);
-		//glLoadIdentity();
-
-		//glDisable(GL_DEPTH_TEST);
+		gameController.draw();
 
 		FsSwapBuffers();
 		FsSleep(10);

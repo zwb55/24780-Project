@@ -11,7 +11,7 @@ void OrbitingViewer::initialize(void)
 {
 	h = 0;
 	p = 0;
-	dist = 120.0;
+	dist = 300.0;
 	focusX = 0.0;
 	focusY = 0.0;
 	focusZ = 0.0;

@@ -13,12 +13,13 @@ public:
 	static const int DEFAULT_Y = 10;
 
 	/* Member fields */
-	std::vector<std::vector<Component*>> map;
+	std::vector<std::vector<Component*>> grid;
 
 	/* Functions */
 	Map();
 	~Map();
 	void draw();
+	bool isValid(int gridX, int gridY);
 
 private:
 };

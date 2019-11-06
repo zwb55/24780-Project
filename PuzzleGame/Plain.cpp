@@ -1,11 +1,17 @@
 #include "Plain.h"
 #include "fssimplewindow.h"
+#include "DrawingUtilNG.h"
 
-Plain::Plain(int _px, int _py): Component(_px, _py, true){}
+Plain::Plain(int _px, int _py): Component(_px, _py, true){
+	// assign a random color to the plain (should be improved)
+	color[0] = DrawingUtilNG::getRandom(0, 255);
+	color[1] = DrawingUtilNG::getRandom(0, 255);
+	color[2] = DrawingUtilNG::getRandom(0, 255);
+}
 
 void Plain::draw() {
 	// draw a surface on XY plane
-	glColor3ub(93, 290, 112);
+	glColor3ub(color[0], color[1], color[2]);
 
 	glEnable(GL_POLYGON_OFFSET_FILL);
 	glPolygonOffset(1, 1);

@@ -1,5 +1,5 @@
 /******************************************************
- * The class that represent each componenet on the map. Should be an "abstract"
+ * The class that represent each componenet on the map. Should be an "abstract" class
  * that must be implemented by a specific component subclass
  *****************************************************/
 

@@ -4,13 +4,16 @@
 
 #pragma once
 #include "Component.h"
+#include <vector>
 
 class Plain : public Component {
 public:
 
-	/*
-	 * Functions
-	 */
+	/* Functions */
 	Plain(int _px, int _py);
 	void draw();
+
+private:
+	/* Member fields */
+	std::vector<int> color{0, 0, 0};
 };

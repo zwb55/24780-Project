@@ -239,6 +239,11 @@ void DrawingUtilNG::drawCube(vertexF v1, vertexF v2, bool sixColors)
 	drawCube(v1.x, v1.y, v1.z, v2.x, v2.y, v2.z, sixColors);
 }
 
+void DrawingUtilNG::drawCube(double x1, double y1, double z1, double side, bool sixColors)
+{
+	drawCube(x1, y1, z1, x1 + side, y1 + side, z1 + side, sixColors);
+}
+
 void DrawingUtilNG::drawCube(double x1, double y1, double z1,
 	double x2, double y2, double z2, bool sixColors, GraphicFont* aFont)
 {
@@ -318,4 +323,9 @@ void DrawingUtilNG::drawCube(double x1, double y1, double z1,
 
 
 	}
+}
+
+int DrawingUtilNG::getRandom(int left, int right)
+{
+	return left + (int)((double)rand() / (RAND_MAX + 1) * (right - left + 1));
 }

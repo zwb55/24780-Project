@@ -126,12 +126,14 @@
   <ItemGroup>
     <ClInclude Include="Camera3D.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="Controller.h" />
     <ClInclude Include="DrawingUtilNG.h" />
     <ClInclude Include="fssimplewindow.h" />
     <ClInclude Include="GraphicFont.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="OrbitingViewer.h" />
     <ClInclude Include="Plain.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="ysglfontdata.h" />
     <ClInclude Include="yspng.h" />
     <ClInclude Include="yssimplesound.h" />
@@ -139,12 +141,14 @@
   <ItemGroup>
     <ClCompile Include="Camera3D.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Controller.cpp" />
     <ClCompile Include="DrawingUtilNG.cpp" />
     <ClCompile Include="fssimplewindow.cpp" />
     <ClCompile Include="GraphicFont.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="OrbitingViewer.cpp" />
     <ClCompile Include="Plain.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="PuzzleGame_main.cpp" />
     <ClCompile Include="ysglfontdata.c" />
     <ClCompile Include="yspng.cpp" />
