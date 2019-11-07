@@ -54,8 +54,8 @@ Return format: pair<int , int> {xPosition, yPosition}
 */
 std::pair<int, int> Controller::getCenter()
 {
-	int xPosition = map.grid.size() * Component::PIXEL_LENGTH;
-	int yPosition = map.grid[0].size() * Component::PIXEL_LENGTH;
+	int xPosition = map.grid.size() * Component::PIXEL_LENGTH / 2;
+	int yPosition = map.grid[0].size() * Component::PIXEL_LENGTH / 2;
 
 	return std::pair<int, int> {xPosition, yPosition};
 }
