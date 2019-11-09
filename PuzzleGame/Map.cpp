@@ -1,5 +1,7 @@
 #include "Map.h"
 #include "Plain.h"
+#include "StartPoint.h"
+#include "EndPoint.h"
 
 /*
 The default constructor initialize a map with default length and all plain on it
@@ -10,6 +12,10 @@ Map::Map(): grid(DEFAULT_X, std::vector<Component*> (DEFAULT_Y, nullptr)){
 			grid[i][j] = new Plain(i, j);
 		}
 	}
+
+	// test start and end point
+	grid[0][0] = new StartPoint(0, 0);
+	grid[2][2] = new EndPoint(2, 2);
 }
 
 Map::~Map() {
