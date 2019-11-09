@@ -27,9 +27,10 @@ Map::~Map() {
 }
 
 void Map::update() {
-    for (auto pos : objectInds) {
+	
+    /*for (auto pos : objectInds) {
         grid[3][3]->update(objectInds);
-    }
+    }*/
 }
 
 /*

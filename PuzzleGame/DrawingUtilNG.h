@@ -26,6 +26,7 @@ namespace DrawingUtilNG {
 
 	// draws common shapes, filled in or not
 	void drawCircle(double centerX, double centerY, double radius, bool filled);
+	void drawCircle(double centerX, double centerY, double centerZ, double radius, bool filled);
 	void drawRectangle(double x, double y, int sizeX, int sizeY, bool filled);
 
 	//converts a color model from HSV to RGB

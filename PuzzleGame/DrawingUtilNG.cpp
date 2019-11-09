@@ -76,6 +76,38 @@ vertexF DrawingUtilNG::rotateVector(vertexF v, vertexF k, float theta)
 	return vectorSum(firstTerm, secondTerm, thirdTerm);
 }
 
+
+void DrawingUtilNG::drawCircle(double centerX, double centerY, double centerZ, double radius, bool filled)
+{
+	float x, y, z, angle;
+	z = centerZ;
+	float radianConvert = atan(1.) / 45.;
+	radius = fabs(radius);
+
+	int stepSize = 1;
+	if (radius < 10)
+		stepSize = 3;
+	else if (radius < 200)
+		stepSize = round((3. - 1.) / (10. - 200.) * (radius - 200.) + 1.);
+
+	stepSize *= 6;  // always want stepSize to be a factor of 360
+
+	if (filled)
+		glBegin(GL_POLYGON);
+	else
+		glBegin(GL_LINE_LOOP);
+
+	for (int i = 0; i < 360; i += stepSize) {
+		angle = i * radianConvert;
+		x = cos(angle) * radius + centerX;
+		y = sin(angle) * radius + centerY;
+		glVertex3d(x, y, z);
+	}
+	glEnd();
+
+}
+
+
 void DrawingUtilNG::drawCircle(double centerX, double centerY,
 	double radius, bool filled)
 {

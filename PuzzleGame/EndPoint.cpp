@@ -7,38 +7,28 @@ EndPoint::EndPoint(int _px, int _py): Component(_px, _py, true) {
 }
 
 void EndPoint::draw() {
-	glColor3ub(229, 229, 237);
-	DrawingUtilNG::drawCube(px * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, 0, 
-		(px + 1) * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, -Component::PIXEL_LENGTH);
+	// draw dark green part
+	glColor3ub(153, 153, 0);
+	DrawingUtilNG::drawCube(px * Component::PIXEL_LENGTH + 0.05 * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH + 0.05 * Component::PIXEL_LENGTH, 0, px * Component::PIXEL_LENGTH + 0.95 * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH + 0.95 * Component::PIXEL_LENGTH, -5, false);
 
-	glColor3ub(170, 174, 190);
-	glEnable(GL_POLYGON_OFFSET_FILL);
-	glPolygonOffset(1, 1);
-	glBegin(GL_QUADS);
-	int bound = Component::PIXEL_LENGTH * 0.1;
+	// draw brown ground
+	glColor3ub(153, 76, 0);
+	DrawingUtilNG::drawCube(px * Component::PIXEL_LENGTH + 0.05 * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH + 0.05 * Component::PIXEL_LENGTH, -5, px * Component::PIXEL_LENGTH + 0.95 * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH + 0.95 * Component::PIXEL_LENGTH, -15, false);
 
-	int x1 = px * Component::PIXEL_LENGTH + bound;
-	int x2 = (px + 1) * Component::PIXEL_LENGTH - bound;
-	int y1 = py * Component::PIXEL_LENGTH + bound;
-	int y2 = (py + 1) * Component::PIXEL_LENGTH - bound;
+	// draw light green surface
+	glColor3ub(255, 255, 0);
+	DrawingUtilNG::drawRectangle(px * Component::PIXEL_LENGTH + 0.1 * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH + 0.1 * Component::PIXEL_LENGTH, 0.8 * Component::PIXEL_LENGTH, 0.8 * Component::PIXEL_LENGTH, true);
 
-	glVertex3i(x1, y1, 0);
-	glVertex3i(x2, y1, 0);
-	glVertex3i(x2, y2, 0);
-	glVertex3i(x1, y2, 0);
+	// draw circles
 
-	glColor3ub(229, 229, 237);
-	x1 += bound;
-	x2 -= bound;
-	y1 += bound;
-	y2 -= bound;
-
-	glVertex3i(x1, y1, 0);
-	glVertex3i(x2, y1, 0);
-	glVertex3i(x2, y2, 0);
-	glVertex3i(x1, y2, 0);
-
-	glEnd();
-	
-	glDisable(GL_POLYGON_OFFSET_FILL);
+	int pos = posZ;
+	glColor3ub(102, 0, 102);
+	DrawingUtilNG::drawCircle((px + 0.5) * Component::PIXEL_LENGTH, (px + 0.5) * Component::PIXEL_LENGTH, 0.01 * pos * Component::PIXEL_LENGTH - 10, Component::PIXEL_LENGTH / 3., true);
+	glColor3ub(153, 0, 153);
+	DrawingUtilNG::drawCircle((px + 0.5) * Component::PIXEL_LENGTH, (px + 0.5) * Component::PIXEL_LENGTH, 0.01 * pos * Component::PIXEL_LENGTH - 5, Component::PIXEL_LENGTH / 3.5, true);
+	glColor3ub(204, 0, 204);
+	DrawingUtilNG::drawCircle((px + 0.5) * Component::PIXEL_LENGTH, (px + 0.5) * Component::PIXEL_LENGTH, 0.01 * pos * Component::PIXEL_LENGTH, Component::PIXEL_LENGTH / 4., true);
+	posZ--;
+	if (posZ == 0)
+		posZ = 100;
 }

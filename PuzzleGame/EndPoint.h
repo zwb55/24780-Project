@@ -10,5 +10,6 @@ public:
 
 	/* Functions */
 	EndPoint(int _px, int _py);
+	int posZ = 100;
 	void draw();
 };
