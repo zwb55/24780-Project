@@ -14,10 +14,12 @@ public:
 
 	/* Member fields */
 	std::vector<std::vector<Component*>> grid;
+    std::vector<int*> objectInds;
 
 	/* Functions */
 	Map();
 	~Map();
+    void update();
 	void draw();
 	bool isValid(int gridX, int gridY);
 
