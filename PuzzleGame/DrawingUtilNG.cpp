@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <algorithm>    // std::max
 //#include "GL\glut.h"
+#include <math.h>
 
 #include "fssimplewindow.h"
 #include "GraphicFont.h"
 
 #include "DrawingUtilNG.h"
-
 
 using namespace DrawingUtilNG;
 
