@@ -34,6 +34,9 @@ void Controller::update(int code)
 	if (code == 1 && map.isValid(player.gridX, player.gridY + 1)) {
 		player.setPosition(player.gridX, player.gridY + 1);
 	}
+	else if (code == 2 && map.isValid(player.gridX, player.gridY - 1)) {
+		player.setPosition(player.gridX, player.gridY - 1);
+	}
 	else if (code == 3 && map.isValid(player.gridX - 1, player.gridY)) {
 		player.setPosition(player.gridX - 1, player.gridY);
 	}

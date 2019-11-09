@@ -71,6 +71,10 @@ int main(void) {
 
 		glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
+		//glDisable(GL_DEPTH_TEST);
+		//glDisable(GL_POLYGON_OFFSET_FILL);
+		//DrawingUtilNG::drawRectangle(0., 0., -60, -60, true);
+
 		glViewport(0, 0, wid, hei);
 
 		// Set up 3D drawing
@@ -84,8 +88,20 @@ int main(void) {
 		// 3D drawing from here
 		gameController.draw();
 
+		glMatrixMode(GL_PROJECTION); // Tell opengl that we are doing project matrix work
+		glLoadIdentity(); // Clear the matrix
+		glOrtho(-9.0, 9.0, -9.0, 9.0, 0.0, 30.0); // Setup an Ortho view
+		glMatrixMode(GL_MODELVIEW); // Tell opengl that we are doing model matrix work. (drawing)
+		glLoadIdentity(); // Clear the model matrix
+
+
+		//DrawingUtilNG::drawRectangle(0., 0., -60, -60, true);
+		
+
 		FsSwapBuffers();
 		FsSleep(10);
+
+
 	}
 
 	return 0;

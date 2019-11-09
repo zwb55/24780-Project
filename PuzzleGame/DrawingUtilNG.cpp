@@ -259,8 +259,6 @@ void DrawingUtilNG::drawCube(double x1, double y1, double z1,
 	glVertex3d(x2, y2, z1);
 	glVertex3d(x1, y2, z1);
 
-
-
 	if (sixColors)
 		glColor3ub(0, 255, 0);  // green
 	glVertex3d(x1, y1, z2);

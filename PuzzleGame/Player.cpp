@@ -66,5 +66,6 @@ void Player::move() {
 
 void Player::draw()
 {
-	DrawingUtilNG::drawCube(spaceX, spaceY, 0, Component::PIXEL_LENGTH, true);
+	DrawingUtilNG::drawCube(spaceX, spaceY, 0, spaceX + Component::PIXEL_LENGTH, spaceY + Component::PIXEL_LENGTH, 20, true);
+
 }
