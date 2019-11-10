@@ -12,11 +12,14 @@
 int main(void) {
 	srand(time(NULL));
 	bool terminate = false;
+	bool clockwise = true;
 	Camera3D camera;
 	OrbitingViewer orbit;
 	Controller gameController;
 
-	camera.z = 10.0;
+	// set the camera focus center
+	orbit.focusX= gameController.getCenter().first;
+	orbit.focusY = gameController.getCenter().second;
 
 	FsOpenWindow(16, 16, 1200, 800, 1);
 
@@ -49,23 +52,28 @@ int main(void) {
 			gameController.update(0);
 		}
 
-		if (0 != FsGetKeyState(FSKEY_LEFT))
-			orbit.h += Camera3D::PI / 180.0;
+		if (0 != FsGetKeyState(FSKEY_LEFT) && !orbit.isorbiting)
+		{
+			orbit.isorbiting = true;
+			clockwise = true;
+		}
 
-		if (0 != FsGetKeyState(FSKEY_RIGHT))
-			orbit.h -= Camera3D::PI / 180.0;
+		if (0 != FsGetKeyState(FSKEY_RIGHT) && !orbit.isorbiting)
+		{
+			orbit.isorbiting = true;
+			clockwise = false;
+		}
 
-		if (0 != FsGetKeyState(FSKEY_UP))
-			orbit.p += Camera3D::PI / 180.0;
+		if (0 != FsGetKeyState(FSKEY_UP) && orbit.r < 500)
+			orbit.r += 10;
 
-		if (0 != FsGetKeyState(FSKEY_DOWN))
-			orbit.p -= Camera3D::PI / 180.0;
+		if (0 != FsGetKeyState(FSKEY_DOWN) && orbit.r > 100.0)
+			orbit.r -= 10;
 
-		if (0 != FsGetKeyState(FSKEY_F) && orbit.dist > 1.0)
-			orbit.dist /= 1.05;
-
-		if (0 != FsGetKeyState(FSKEY_B) && orbit.dist < 500.0)
-			orbit.dist *= 1.05;
+		if (orbit.isorbiting)
+		{
+			orbit.changeview(clockwise);
+		}
 
 		orbit.setUpCamera(camera);
 
@@ -79,7 +87,7 @@ int main(void) {
 
 		// Set up 3D drawing
 		camera.setUpCameraProjection();
-		camera.setUpCameraTransformation();
+		camera.setUpCameraTransformation(orbit);
 
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_POLYGON_OFFSET_FILL);

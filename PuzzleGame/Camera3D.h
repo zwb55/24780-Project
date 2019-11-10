@@ -1,6 +1,7 @@
 #pragma once
+#include "OrbitingViewer.h"
 
-
+class OrbitingViewer;
 class Camera3D
 {
 public:
@@ -13,7 +14,7 @@ public:
 	Camera3D();
 	void initialize(void);
 	void setUpCameraProjection(void);
-	void setUpCameraTransformation(void);
+	void setUpCameraTransformation(OrbitingViewer& orbit);
 
 	void getForwardVector(double& vx, double& vy, double& vz);
 };

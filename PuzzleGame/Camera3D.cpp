@@ -12,11 +12,12 @@ Camera3D::Camera3D()
 void Camera3D::initialize(void)
 {
 	x = y = z = 0;
-	h = p = b = 0;
+	h = b = 0;
+	p = 0;
 
-	fov = PI / 6.0;  // 30 degree
+	fov = PI / 4.0;  // 30 degree
 	nearZ = 0.1;
-	farZ = 400.0;
+	farZ = 800.0;
 }
 
 void Camera3D::setUpCameraProjection(void)
@@ -32,14 +33,17 @@ void Camera3D::setUpCameraProjection(void)
 	gluPerspective(fov * 180.0 / PI, aspect, nearZ, farZ);
 }
 
-void Camera3D::setUpCameraTransformation(void)
+void Camera3D::setUpCameraTransformation(OrbitingViewer& orbit)
 {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+	/*
 	glRotated(-b * 180.0 / PI, 0.0, 0.0, 1.0);
 	glRotated(-p * 180.0 / PI, 1.0, 0.0, 0.0);
 	glRotated(-h * 180.0 / PI, 0.0, 1.0, 0.0);
 	glTranslated(-x, -y, -z);
+	*/
+	gluLookAt(x, y, z, orbit.focusX, orbit.focusY, orbit.focusZ, 0, 0, 1);
 }
 
 void Camera3D::getForwardVector(double& vx, double& vy, double& vz)
