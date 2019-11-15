@@ -138,6 +138,7 @@
     <ClInclude Include="Plain.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="StartPoint.h" />
+    <ClInclude Include="Switch.h" />
     <ClInclude Include="ysglfontdata.h" />
     <ClInclude Include="yspng.h" />
     <ClInclude Include="yssimplesound.h" />
@@ -158,6 +159,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PuzzleGame_main.cpp" />
     <ClCompile Include="StartPoint.cpp" />
+    <ClCompile Include="Switch.cpp" />
     <ClCompile Include="ysglfontdata.c" />
     <ClCompile Include="yspng.cpp" />
     <ClCompile Include="yssimplesound.cpp" />
