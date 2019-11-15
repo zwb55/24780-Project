@@ -3,6 +3,7 @@
  *****************************************************/
 
 #pragma once
+#include <string>
 
 class Player {
 public:
@@ -28,7 +29,7 @@ public:
 	Player(int _gridX, int _gridY);
 
 	void setPosition(int _gridX, int _gridY);
-	int* getPosition();
+	std::pair<int, int> getPosition();
 	void move();
 	void draw();
 };

@@ -1,15 +1,11 @@
 #include "Controller.h"
+#include <iostream>
 
 /*
 The default constructor of Controller class. Will initialize a controller class with level 0
 */
 Controller::Controller(): Controller(0) {
-	map.objectInds.push_back(player.getPosition());
-	int* pair = new int[4];
-	pair[0] = 3; pair[1] = 3; pair[2] = 8; pair[3] = 3;
-	map.objectInds.push_back(pair);
-//	map.objectInds.push_back(map.grid[3][3]->getPosition());
-	map.lastObjectInds = map.objectInds;
+	
 }
 
 /*
@@ -35,7 +31,6 @@ Perform update based on user input. Define the input code:
 */
 void Controller::update(int code)
 {
-	map.lastObjectInds = map.objectInds;
 	if (code != 0 && !isAvailable()) {
 		return;
 	}
@@ -52,7 +47,6 @@ void Controller::update(int code)
 		player.setPosition(player.gridX + 1, player.gridY);
 	}
 	player.move();
-	map.objectInds[0] = player.getPosition();
 }
 
 /*
@@ -86,19 +80,22 @@ void Controller::updateObjectInds() {
 	for (int i = 0; i < map.grid.size(); i++) {
 		for (int j = 0; j < map.grid[0].size(); j++) {
 			char componentID = map.grid[i][j]->ID;
-			int* playerLoc = player.getPosition();
+			std::pair<int, int> playerLoc = player.getPosition();
 			switch (componentID) {
 				case 'p':
 					break;
 				case 'b':
+					std::cout << playerLoc.first << ", " << playerLoc.second << std::endl;
 					int* doorLoc = map.grid[i][j]->corrCompLoc;
-					if (playerLoc[0] == i && playerLoc[1] == j) {
+					if (playerLoc.first == i && playerLoc.second == j) {
 						map.grid[i][j]->state = false;
 						map.grid[doorLoc[0]][doorLoc[1]]->state = false;
 					} else {
 						map.grid[i][j]->state = true;
 						map.grid[doorLoc[0]][doorLoc[1]]->state = true;
 					}
+					break;
+				case 'd':
 					break;
 			}
 		}

@@ -24,6 +24,7 @@ void Door::draw() {
 	glColor3b(100, 100, 100);
 	if (state)
 	{
+		canLand = false;
 		height += 1;
 		if (height >= Component::PIXEL_LENGTH * 2.)
 			height = Component::PIXEL_LENGTH * 2.;
@@ -33,8 +34,10 @@ void Door::draw() {
 	else
 	{
 		height -= 1;
-		if (height <= 0)
+		if (height <= 0) {
 			height = 0;
+			canLand = true;
+		}
 		DrawingUtilNG::drawCube(px * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, 0, (px + 1) * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, height, false);
 
 	}

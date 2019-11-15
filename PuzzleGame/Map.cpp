@@ -17,8 +17,8 @@ Map::Map(): grid(DEFAULT_X, std::vector<Component*> (DEFAULT_Y, nullptr)){
 	// test start and end point
 	grid[0][0] = new StartPoint(0, 0);
 	grid[2][2] = new EndPoint(2, 2);
-	grid[3][3] = new Button(3, 3, 8, 3);
-	grid[8][3] = new Door(8, 3);
+	grid[3][3] = new Button(3, 3, 4, 3);
+	grid[4][3] = new Door(4, 3);
 
 }
 
@@ -31,24 +31,7 @@ Map::~Map() {
 }
 
 void Map::update() {
-	for (int i = 0; i < objectInds.size(); i++) {
-		if (lastObjectInds[i][0] == objectInds[i][0] && lastObjectInds[i][1] == objectInds[i][1]) {
-			continue;
-		}
-		for (int j = i + 1; j < objectInds.size(); j++) {
-			int x = objectInds[j][0];
-			int y = objectInds[j][1];
-			int doorx = objectInds[j][2];
-			int doory = objectInds[j][3];\
-			if (objectInds[i][0] == x && objectInds[i][1] == y) {
-				grid[x][y]->update();
-				grid[doorx][doory]->update();
-			} else if (lastObjectInds[i][0] == objectInds[j][0] && lastObjectInds[i][1] == objectInds[j][1]) {
-				grid[x][y]->update();
-				grid[doorx][doory]->update();
-			}
-		}
-	}
+	
 }
 
 /*
