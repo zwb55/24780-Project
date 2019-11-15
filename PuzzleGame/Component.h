@@ -19,6 +19,7 @@ public:
 	char ID;
 	bool canLand;  // whether player can land on this component
 	bool state; // for button, switch, etc. subclasses
+	int corrCompLoc[2];
 
 	/* Functinons */
 

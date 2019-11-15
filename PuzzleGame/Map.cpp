@@ -17,7 +17,7 @@ Map::Map(): grid(DEFAULT_X, std::vector<Component*> (DEFAULT_Y, nullptr)){
 	// test start and end point
 	grid[0][0] = new StartPoint(0, 0);
 	grid[2][2] = new EndPoint(2, 2);
-	grid[3][3] = new Button(3, 3);
+	grid[3][3] = new Button(3, 3, 8, 3);
 	grid[8][3] = new Door(8, 3);
 	
 	

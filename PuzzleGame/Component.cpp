@@ -9,7 +9,6 @@ Component::Component(int _px, int _py, int _canLand, char _ID) {
 }
 
 int* Component::getPosition() {
-	int* loc = new int[2];
-	loc[0] = px; loc[1] = py;
+	int loc[2] = { px, py };
 	return loc;
 }

@@ -12,7 +12,7 @@ class Button : public Component {
 public:
     
     /* Functions */
-    Button(int _px, int _py);
+    Button(int _px, int _py, int _doorx, int _doory);
     void draw();
 	void update();
 	int* corrDoor
