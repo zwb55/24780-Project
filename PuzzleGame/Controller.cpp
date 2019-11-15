@@ -75,7 +75,7 @@ Draw all the things in current map
 */
 void Controller::draw()
 {
-	//updateObjectInds();
+	updateObjectInds();
 	map.draw();
 	player.draw();
 	for (int i = 0; i < Rocks.size(); i++)
@@ -90,22 +90,26 @@ Updates the objectInds field of map with all the updated positions of objects
 void Controller::updateObjectInds() {
 	for (int i = 0; i < map.grid.size(); i++) {
 		for (int j = 0; j < map.grid[0].size(); j++) {
-			int componentID = map.grid[i][j]->ID;
+			char componentID = map.grid[i][j]->ID;
+			int* playerLoc = player.getPosition();
 			switch (componentID) {
-				case 'P':
+
+
+				case 'p':
 					break;
-				case 'E':
+				case 'b':
+					int* doorLoc = map.grid[i][j]->corrCompLoc;
+					if (playerLoc[0] == i && playerLoc[1] == j) {
+						map.grid[i][j]->state = false;
+						map.grid[doorLoc[0]][doorLoc[1]]->state = false;
+					} else {
+						map.grid[i][j]->state = true;
+						map.grid[doorLoc[0]][doorLoc[1]]->state = true;
+					}
 					break;
-				case 'S':
-					break;
-				case 'R':
-					//get player cur position
-					//overlap
-					//get last; updata rock;
-					break;
-				// ...
 			}
 		}
+
 	}
 
 }

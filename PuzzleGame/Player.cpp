@@ -40,8 +40,7 @@ void Player::setPosition(int _gridX, int _gridY)
 }
 
 int* Player::getPosition() {
-	int* loc = new int[2];
-	loc[0] = gridX; loc[1] = gridY;
+	int loc[2] = { gridX, gridY };
 	return loc;
 }
 
