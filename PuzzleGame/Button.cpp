@@ -3,20 +3,23 @@
 #include "DrawingUtilNG.h"
 #include "Plain.h"
 
-Button::Button(int _px, int _py): Component(_px, _py, true, 'd') {
+Button::Button(int _px, int _py, int _doorx, int _doory): Component(_px, _py, true, 'b') {
     // assign a random color to the plain (should be improved)
 	color[0] = DrawingUtilNG::getRandom(0, 255);
     color[1] = DrawingUtilNG::getRandom(0, 255);
     color[2] = DrawingUtilNG::getRandom(0, 255);
+	corrCompLoc[0] = _doorx;
+	corrCompLoc[1] = _doory;
+	state = true;
 }
 
 void Button::update() {
-	open = !open;
+	state = !state;
 }
 
 void Button::draw() {
 	glColor3b(0, 0, 255);
-	if (open)
+	if (state)
 	{
 		height += 1;
 		if (height >= Component::PIXEL_LENGTH * 0.3)

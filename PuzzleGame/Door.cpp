@@ -7,6 +7,7 @@ Door::Door(int _px, int _py): Component(_px, _py, false, 'd'){
 	color[0] = 200;
 	color[1] = 200;
 	color[2] = 200;
+	state = true;
 }
 
 void Door::setPosition(int _px, int _py) {
@@ -15,13 +16,13 @@ void Door::setPosition(int _px, int _py) {
 }
 
 void Door::update() {
-	open = !open;
+	state = !state;
 	canLand = !canLand;
 }
 
 void Door::draw() {
 	glColor3b(100, 100, 100);
-	if (!open)
+	if (state)
 	{
 		height += 1;
 		if (height >= Component::PIXEL_LENGTH * 2.)

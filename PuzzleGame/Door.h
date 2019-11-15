@@ -21,5 +21,4 @@ private:
 	friend class Button;
 	/* Member fields */
 	std::vector<int> color{0, 0, 0};
-	bool open = false;
 };

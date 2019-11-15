@@ -12,7 +12,7 @@ class Button : public Component {
 public:
     
     /* Functions */
-    Button(int _px, int _py);
+    Button(int _px, int _py, int _doorx, int _doory);
     void draw();
 	void update();
 	int height = Component::PIXEL_LENGTH * 0.3;
@@ -20,5 +20,4 @@ public:
 private:
     /* Member fields */
     std::vector<int> color{0, 0, 0};
-    bool open = true;
 };
