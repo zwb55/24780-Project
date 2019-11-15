@@ -2,7 +2,7 @@
 #include "DrawingUtilNG.h"
 #include "fssimplewindow.h"
 
-EndPoint::EndPoint(int _px, int _py): Component(_px, _py, true) {
+EndPoint::EndPoint(int _px, int _py): Component(_px, _py, true, 'e') {
 
 }
 

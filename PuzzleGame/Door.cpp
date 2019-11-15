@@ -2,7 +2,7 @@
 #include "fssimplewindow.h"
 #include "DrawingUtilNG.h"
 
-Door::Door(int _px, int _py): Component(_px, _py, false){
+Door::Door(int _px, int _py): Component(_px, _py, false, 'd'){
 	// assign a random color to the plain (should be improved)
 	color[0] = 200;
 	color[1] = 200;

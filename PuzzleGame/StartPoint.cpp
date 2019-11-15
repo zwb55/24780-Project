@@ -2,7 +2,7 @@
 #include "DrawingUtilNG.h"
 #include "fssimplewindow.h"
 
-StartPoint::StartPoint(int _px, int _py): Component(_px, _py, true) {
+StartPoint::StartPoint(int _px, int _py): Component(_px, _py, true, 's') {
 
 }
 

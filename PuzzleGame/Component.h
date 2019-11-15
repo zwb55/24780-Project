@@ -14,12 +14,13 @@ public:
 	/* Member fields */
 	// define the x, y, position of the component in the map (not the pixel position)
 	int px;
-	int py; 
+	int py;
+	char ID;
 	bool canLand;  // whether player can land on this component
 	bool state; // for button, switch, etc. subclasses
 
 	/* Functinons */
-	Component(int _px, int _py, int _canLand);
+	Component(int _px, int _py, int _canLand, char _ID);
 	int* getPosition();
 
 	// define as pure virtual function because only a specific componenet can be drawed

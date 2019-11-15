@@ -83,8 +83,20 @@ void Controller::draw()
 Updates the objectInds field of map with all the updated positions of objects
 */
 void Controller::updateObjectInds() {
-	map.grid[player.getPosition()[0]][player.getPosition()[1]]->canLand = false;
-	return;
+	for (int i = 0; i < map.grid.size(); i++) {
+		for (int j = 0; j < map.grid[0].size(); j++) {
+			int componentID = map.grid[i][j]->ID;
+			switch (componentID) {
+				case 1:
+					break;
+				case 2:
+					break;
+				case 3:
+					break;
+				// ...
+			}
+		}
+	}
 }
 
 /*
