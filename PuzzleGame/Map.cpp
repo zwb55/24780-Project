@@ -4,6 +4,7 @@
 #include "EndPoint.h"
 #include "Button.h"
 #include "Door.h"
+#include "Rock.h"
 
 /*
 The default constructor initialize a map with default length and all plain on it

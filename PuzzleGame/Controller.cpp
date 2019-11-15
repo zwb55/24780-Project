@@ -10,6 +10,7 @@ Controller::Controller(): Controller(0) {
 	map.objectInds.push_back(pair);
 //	map.objectInds.push_back(map.grid[3][3]->getPosition());
 	map.lastObjectInds = map.objectInds;
+
 }
 
 /*
@@ -77,6 +78,10 @@ void Controller::draw()
 	//updateObjectInds();
 	map.draw();
 	player.draw();
+	for (int i = 0; i < Rocks.size(); i++)
+	{
+		Rocks[i].draw();
+	}
 }
 
 /*
@@ -87,16 +92,22 @@ void Controller::updateObjectInds() {
 		for (int j = 0; j < map.grid[0].size(); j++) {
 			int componentID = map.grid[i][j]->ID;
 			switch (componentID) {
-				case 1:
+				case 'P':
 					break;
-				case 2:
+				case 'E':
 					break;
-				case 3:
+				case 'S':
+					break;
+				case 'R':
+					//get player cur position
+					//overlap
+					//get last; updata rock;
 					break;
 				// ...
 			}
 		}
 	}
+
 }
 
 /*

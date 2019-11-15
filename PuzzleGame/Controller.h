@@ -6,6 +6,8 @@
 #pragma once
 #include "Map.h"
 #include "Player.h"
+#include "Rock.h"
+#include <vector>
 
 class Controller {
 public:
@@ -22,6 +24,7 @@ private:
 	/* Member fields */
 	Map map;
 	Player player;
+	std::vector<Rock> Rocks;
 
 	// define the current level of the game, each level will have a separate controller
 	int level;
