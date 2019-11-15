@@ -15,6 +15,7 @@ public:
 
 	void update(int code);
 	std::pair<int, int> getCenter();
+	void updateObjectInds();
 	void draw();
 
 private:

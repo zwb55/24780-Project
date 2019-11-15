@@ -3,7 +3,14 @@
 /*
 The default constructor of Controller class. Will initialize a controller class with level 0
 */
-Controller::Controller(): Controller(0) {}
+Controller::Controller(): Controller(0) {
+	map.objectInds.push_back(player.getPosition());
+	int* pair = new int[4];
+	pair[0] = 3; pair[1] = 3; pair[2] = 8; pair[3] = 3;
+	map.objectInds.push_back(pair);
+//	map.objectInds.push_back(map.grid[3][3]->getPosition());
+	map.lastObjectInds = map.objectInds;
+}
 
 /*
 Construt the Controller class by passing in a level argument. Currently initialize a default map,
@@ -28,6 +35,7 @@ Perform update based on user input. Define the input code:
 */
 void Controller::update(int code)
 {
+	map.lastObjectInds = map.objectInds;
 	if (code != 0 && !isAvailable()) {
 		return;
 	}
@@ -44,6 +52,7 @@ void Controller::update(int code)
 		player.setPosition(player.gridX + 1, player.gridY);
 	}
 	player.move();
+	map.objectInds[0] = player.getPosition();
 }
 
 /*
@@ -65,8 +74,17 @@ Draw all the things in current map
 */
 void Controller::draw()
 {
+	updateObjectInds();
 	map.draw();
 	player.draw();
+}
+
+/*
+Updates the objectInds field of map with all the updated positions of objects
+*/
+void Controller::updateObjectInds() {
+	map.grid[player.getPosition()[0]][player.getPosition()[1]]->canLand = false;
+	return;
 }
 
 /*

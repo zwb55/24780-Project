@@ -39,6 +39,12 @@ void Player::setPosition(int _gridX, int _gridY)
 	gridY = _gridY;
 }
 
+int* Player::getPosition() {
+	int* loc = new int[2];
+	loc[0] = gridX; loc[1] = gridY;
+	return loc;
+}
+
 /*
 Move the player to new position
 */

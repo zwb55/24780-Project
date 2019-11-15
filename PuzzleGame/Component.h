@@ -16,10 +16,13 @@ public:
 	int px;
 	int py; 
 	bool canLand;  // whether player can land on this component
+	bool state; // for button, switch, etc. subclasses
 
 	/* Functinons */
 	Component(int _px, int _py, int _canLand);
+	int* getPosition();
 
 	// define as pure virtual function because only a specific componenet can be drawed
 	virtual void draw() = 0;
+	virtual void update() = 0;
 };

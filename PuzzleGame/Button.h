@@ -5,6 +5,7 @@
 
 #pragma once
 #include "Component.h"
+#include "Door.h"
 #include <vector>
 
 class Button : public Component {
@@ -12,11 +13,11 @@ public:
     
     /* Functions */
     Button(int _px, int _py);
-    void update(std::vector<int*> objectInds);
     void draw();
+	void update();
     
 private:
     /* Member fields */
     std::vector<int> color{0, 0, 0};
-    bool open;
+    bool open = true;
 };

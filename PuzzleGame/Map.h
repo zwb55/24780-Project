@@ -15,6 +15,8 @@ public:
 	/* Member fields */
 	std::vector<std::vector<Component*>> grid;
     std::vector<int*> objectInds;
+	std::vector<int*> lastObjectInds;
+	std::vector<int*> buttonDoorPairs;
 
 	/* Functions */
 	Map();

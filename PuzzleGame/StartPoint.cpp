@@ -6,6 +6,10 @@ StartPoint::StartPoint(int _px, int _py): Component(_px, _py, true) {
 
 }
 
+void StartPoint::update() {
+	return;
+}
+
 void StartPoint::draw() {
 	// draw dark green part
 	glColor3ub(153, 153, 0);

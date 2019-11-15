@@ -13,6 +13,10 @@ Plain::Plain(int _px, int _py): Component(_px, _py, true){
 	color[2] = 0;
 }
 
+void Plain::update() {
+	return;
+}
+
 void Plain::draw() {
 	// draw dark green part
 	glColor3ub(color[0], color[1], color[2]);

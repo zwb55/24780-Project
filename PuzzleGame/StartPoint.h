@@ -12,4 +12,5 @@ public:
 	StartPoint(int _px, int _py);
 	int posZ = 0;
 	void draw();
+	void update();
 };

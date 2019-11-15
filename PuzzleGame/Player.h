@@ -28,6 +28,7 @@ public:
 	Player(int _gridX, int _gridY);
 
 	void setPosition(int _gridX, int _gridY);
+	int* getPosition();
 	void move();
 	void draw();
 };

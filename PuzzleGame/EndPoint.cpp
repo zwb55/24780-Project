@@ -6,6 +6,10 @@ EndPoint::EndPoint(int _px, int _py): Component(_px, _py, true) {
 
 }
 
+void EndPoint::update() {
+	return;
+}
+
 void EndPoint::draw() {
 	// draw dark green part
 	glColor3ub(153, 153, 0);

@@ -12,6 +12,7 @@ public:
 	/* Functions */
 	Plain(int _px, int _py);
 	void draw();
+	void update();
 
 private:
 	/* Member fields */
