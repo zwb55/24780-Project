@@ -8,11 +8,9 @@ Button::Button(int _px, int _py, int _doorx, int _doory): Component(_px, _py, tr
 	color[0] = DrawingUtilNG::getRandom(0, 255);
     color[1] = DrawingUtilNG::getRandom(0, 255);
     color[2] = DrawingUtilNG::getRandom(0, 255);
-
 	corrCompLoc[0] = _doorx;
 	corrCompLoc[1] = _doory;
 	state = true;
-
 }
 
 void Button::update() {
@@ -20,7 +18,6 @@ void Button::update() {
 }
 
 void Button::draw() {
-
 	glColor3b(0, 0, 255);
 	if (state)
 	{
@@ -39,38 +36,15 @@ void Button::draw() {
 
 	}
 	// draw dark green part
-
 	glColor3ub(color[0], color[1], color[2]);
-	DrawingUtilNG::drawCube(px* Component::PIXEL_LENGTH + 0.05 * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH + 0.05 * Component::PIXEL_LENGTH, 0, px * Component::PIXEL_LENGTH + 0.95*Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH + 0.95*Component::PIXEL_LENGTH, -5, false);
-	
+	DrawingUtilNG::drawCube(px * Component::PIXEL_LENGTH + 0.05 * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH + 0.05 * Component::PIXEL_LENGTH, 0, px * Component::PIXEL_LENGTH + 0.95 * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH + 0.95 * Component::PIXEL_LENGTH, -5, false);
+
 	// draw brown ground
 	glColor3ub(153, 76, 0);
 	DrawingUtilNG::drawCube(px * Component::PIXEL_LENGTH + 0.05 * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH + 0.05 * Component::PIXEL_LENGTH, -5, px * Component::PIXEL_LENGTH + 0.95 * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH + 0.95 * Component::PIXEL_LENGTH, -15, false);
-	
+
 	// draw light green surface
 	glColor3ub(153, 255, 51);
 	DrawingUtilNG::drawRectangle(px * Component::PIXEL_LENGTH + 0.1 * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH + 0.1 * Component::PIXEL_LENGTH, 0.8 * Component::PIXEL_LENGTH, 0.8 * Component::PIXEL_LENGTH, true);
-	
-    int x1 = px * Component::PIXEL_LENGTH + 5;
-    int x2 = (px + 1) * Component::PIXEL_LENGTH - 5;
-    int y1 = py * Component::PIXEL_LENGTH + 5;
-    int y2 = (py + 1) * Component::PIXEL_LENGTH - 5;
-    int z1 = 1, z2 = 1;
-    
-//    if (open) {
-//        z2 = Component::PIXEL_LENGTH * 2;
-//    } else {
-//        z2 = 0;
-//    }
-//
-//    glVertex3i(x1, y1, 0);
-//    glVertex3i(x2, y1, 0);
-//    glVertex3i(x2, y2, 0);
-//    glVertex3i(x1, y2, 0);
-    glColor3ub(255, 255, 255);
-    DrawingUtilNG::drawCube(x1, y1, z1, x2, y2, z2, false);
-    
-//    glEnd();
-//    
-//    glDisable(GL_POLYGON_OFFSET_FILL);
+
 }
