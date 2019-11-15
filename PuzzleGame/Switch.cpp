@@ -29,8 +29,19 @@ void Switch::draw()
 	gluSphere(quad, r, 36, 36);
 
 	// draw cylinder use theta
+	if (state)
+	{
+		if (theta < 45)
+			theta += 2;
+	}
+	else
+	{
+		if (theta > -45)
+			theta -= 2;
+	}
 	glColor3ub(0, 0, 0);
 	glRotated(theta, 1, 0, 0);
+	gluCylinder(cylinder, 1.5, 1.5, 20, 20, 20);
 
 	glPopMatrix();
 
