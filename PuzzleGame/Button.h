@@ -15,6 +15,7 @@ public:
     Button(int _px, int _py);
     void draw();
 	void update();
+	int height = Component::PIXEL_LENGTH * 0.3;
     
 private:
     /* Member fields */

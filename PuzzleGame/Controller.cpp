@@ -74,7 +74,7 @@ Draw all the things in current map
 */
 void Controller::draw()
 {
-	updateObjectInds();
+	//updateObjectInds();
 	map.draw();
 	player.draw();
 }
