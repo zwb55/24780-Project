@@ -15,11 +15,9 @@ public:
 	void setPosition(int _px, int _py);
 	void draw();
 	void update();
-	int height = Component::PIXEL_LENGTH*2.;
 	
 private:
 	friend class Button;
 	/* Member fields */
 	std::vector<int> color{0, 0, 0};
-	bool open = false;
 };

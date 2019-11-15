@@ -74,7 +74,7 @@ Draw all the things in current map
 */
 void Controller::draw()
 {
-	//updateObjectInds();
+	updateObjectInds();
 	map.draw();
 	player.draw();
 }
@@ -83,8 +83,39 @@ void Controller::draw()
 Updates the objectInds field of map with all the updated positions of objects
 */
 void Controller::updateObjectInds() {
-	map.grid[player.getPosition()[0]][player.getPosition()[1]]->canLand = false;
+	for (int i = 0; i < map.grid.size(); i++) {
+		for (int j = 0; j < map.grid[0].size(); j++) {
+			int componentID = map.grid[i][j]->ID;
+			switch (componentID) {
+				case 1: // plane
+					break;
+				case 2: // button
+					break;
+				case 3: // switch
+					break;
+				case 4: // rock
+					break;
+			}
+		}
+	/*
+	iterate entire grid:
+	 	check ID
+	 	if plane:
+	 		conitnue;
+	// if button
+	 //		check if anything on top
+	// 		get button corrDoor pos
+	//		get pos on grid
+	//		update
+	 // if switch
+	//		...
+	//	if rock
+	//		...
+	 //		get player pos
+	//		get player last pos
+	 //		check if player pushed
 	return;
+	 */
 }
 
 /*

@@ -1,9 +1,9 @@
 #include "Component.h"
 
-Component::Component(int _px, int _py, int _canLand) {
+Component::Component(int _px, int _py, int _canLand, int _ID) {
 	px = _px;
 	py = _py;
-	
+	ID = _ID;
 	canLand = _canLand;
 }
 

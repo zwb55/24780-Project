@@ -15,10 +15,9 @@ public:
     Button(int _px, int _py);
     void draw();
 	void update();
-	int height = Component::PIXEL_LENGTH * 0.3;
+	int* corrDoor
     
 private:
     /* Member fields */
     std::vector<int> color{0, 0, 0};
-    bool open = true;
 };
