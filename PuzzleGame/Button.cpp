@@ -3,7 +3,7 @@
 #include "DrawingUtilNG.h"
 #include "Plain.h"
 
-Button::Button(int _px, int _py): Component(_px, _py, true) {
+Button::Button(int _px, int _py): Component(_px, _py, true, 'd') {
     // assign a random color to the plain (should be improved)
 	color[0] = DrawingUtilNG::getRandom(0, 255);
     color[1] = DrawingUtilNG::getRandom(0, 255);

@@ -2,7 +2,7 @@
 #include "fssimplewindow.h"
 #include "DrawingUtilNG.h"
 
-Plain::Plain(int _px, int _py): Component(_px, _py, true){
+Plain::Plain(int _px, int _py): Component(_px, _py, true, 'p'){
 	//// assign a random color to the plain (should be improved)
 	//color[0] = DrawingUtilNG::getRandom(0, 255);
 	//color[1] = DrawingUtilNG::getRandom(0, 255);

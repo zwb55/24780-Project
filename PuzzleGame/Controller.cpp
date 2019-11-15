@@ -116,6 +116,8 @@ void Controller::updateObjectInds() {
 	 //		check if player pushed
 	return;
 	 */
+
+	}
 }
 
 /*
