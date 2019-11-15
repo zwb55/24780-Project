@@ -88,7 +88,6 @@ void Controller::updateObjectInds() {
 			char componentID = map.grid[i][j]->ID;
 			int* playerLoc = player.getPosition();
 			switch (componentID) {
-
 				case 'p':
 					break;
 				case 'b':
@@ -103,26 +102,6 @@ void Controller::updateObjectInds() {
 					break;
 			}
 		}
-	/*
-	iterate entire grid:
-	 	check ID
-	 	if plane:
-	 		conitnue;
-	// if button
-	 //		check if anything on top
-	// 		get button corrDoor pos
-	//		get pos on grid
-	//		update
-	 // if switch
-	//		...
-	//	if rock
-	//		...
-	 //		get player pos
-	//		get player last pos
-	 //		check if player pushed
-	return;
-	 */
-
 	}
 }
 
