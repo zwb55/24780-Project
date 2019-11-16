@@ -29,6 +29,7 @@ public:
 	Player(int _gridX, int _gridY);
 
 	void setPosition(int _gridX, int _gridY);
+
 	std::pair<int, int> getPosition();
 	void move();
 	void draw();

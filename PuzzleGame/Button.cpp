@@ -18,7 +18,7 @@ void Button::update() {
 }
 
 void Button::draw() {
-	glColor3b(0, 0, 255);
+	glColor3ub(153, 0, 0);
 	if (state)
 	{
 		height += 1;

@@ -66,7 +66,11 @@
     <ClInclude Include="Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
+    <ClInclude Include="Rock.h">
+=======
     <ClInclude Include="Switch.h">
+>>>>>>> 441986bf1ebcc74cc4d9a89780c2d4d46d315267
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -128,7 +132,11 @@
     <ClCompile Include="Button.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="Rock.cpp">
+=======
     <ClCompile Include="Switch.cpp">
+>>>>>>> 441986bf1ebcc74cc4d9a89780c2d4d46d315267
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

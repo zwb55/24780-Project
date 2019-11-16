@@ -137,6 +137,7 @@
     <ClInclude Include="OrbitingViewer.h" />
     <ClInclude Include="Plain.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Rock.h" />
     <ClInclude Include="StartPoint.h" />
     <ClInclude Include="Switch.h" />
     <ClInclude Include="ysglfontdata.h" />
@@ -158,6 +159,7 @@
     <ClCompile Include="Plain.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PuzzleGame_main.cpp" />
+    <ClCompile Include="Rock.cpp" />
     <ClCompile Include="StartPoint.cpp" />
     <ClCompile Include="Switch.cpp" />
     <ClCompile Include="ysglfontdata.c" />

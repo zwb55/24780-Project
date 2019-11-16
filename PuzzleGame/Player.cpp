@@ -40,6 +40,8 @@ void Player::setPosition(int _gridX, int _gridY)
 	gridY = _gridY;
 }
 
+
+
 std::pair<int, int> Player::getPosition() {
 	return std::pair<int, int> {gridX, gridY};
 }

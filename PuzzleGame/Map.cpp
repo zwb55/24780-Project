@@ -4,6 +4,7 @@
 #include "EndPoint.h"
 #include "Button.h"
 #include "Door.h"
+#include "Rock.h"
 #include "Switch.h"
 /*
 The default constructor initialize a map with default length and all plain on it
@@ -17,10 +18,10 @@ Map::Map(): grid(DEFAULT_X, std::vector<Component*> (DEFAULT_Y, nullptr)){
 	// test start and end point
 	grid[0][0] = new StartPoint(0, 0);
 	grid[2][2] = new EndPoint(2, 2);
-
 	grid[3][3] = new Button(3, 3, 8, 8);
 	grid[8][8] = new Door(8, 8);
 	grid[4][4] = new Switch(4, 4, 8, 8);
+
 }
 
 Map::~Map() {
