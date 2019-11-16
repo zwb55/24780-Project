@@ -20,7 +20,8 @@ Map::Map(): grid(DEFAULT_X, std::vector<Component*> (DEFAULT_Y, nullptr)){
 	grid[2][2] = new EndPoint(2, 2);
 	grid[3][3] = new Button(3, 3, 8, 8);
 	grid[8][8] = new Door(8, 8);
-	grid[4][4] = new Switch(4, 4, 8, 8);
+	grid[7][7] = new Door(7, 7);
+	grid[1][6] = new Switch(1, 6, 7, 7);
 
 }
 

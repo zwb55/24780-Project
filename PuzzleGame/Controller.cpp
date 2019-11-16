@@ -214,8 +214,8 @@ void Controller::updateObjectInds() {
 					int* doorLoc = map.grid[i][j]->corrCompLoc;
 					int direction1[4] = { 0,1,0,-1 };
 					int direction2[4] = { 1,0,-1,0 };
-					int nextX = playerLoc.first + direction1[player.face];
-					int nextY = playerLoc.second + direction2[player.face];
+					int nextX = loc.first + direction1[player.face];
+					int nextY = loc.second + direction2[player.face];
 					if (nextX == i && nextY == j)
 					{
 						map.grid[i][j]->state = true;
