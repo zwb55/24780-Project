@@ -15,7 +15,7 @@ public:
 	void setPosition(int _px, int _py);
 	void draw();
 	void update();
-	int height = 300;
+	int height = Component::PIXEL_LENGTH*2.;
 	
 private:
 	friend class Button;

@@ -1,6 +1,5 @@
 #include "Component.h"
 
-
 Component::Component(int _px, int _py, int _canLand, char _ID) {
 	px = _px;
 	py = _py;

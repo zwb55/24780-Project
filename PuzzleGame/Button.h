@@ -15,8 +15,7 @@ public:
     Button(int _px, int _py, int _doorx, int _doory);
     void draw();
 	void update();
-	int* corrDoor;
-	int height = 50;
+	int height = Component::PIXEL_LENGTH * 0.3;
     
 private:
     /* Member fields */

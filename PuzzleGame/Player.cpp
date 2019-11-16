@@ -39,9 +39,9 @@ void Player::setPosition(int _gridX, int _gridY)
 	gridY = _gridY;
 }
 
-int* Player::getPosition() {
-	int loc[2] = { gridX, gridY };
-	return loc;
+std::pair<int, int> Player::getPosition()
+{
+	return std::pair<int, int> {gridX, gridY};
 }
 
 /*
