@@ -14,7 +14,7 @@ public:
 
 	/* Member fields */
 	std::vector<std::vector<Component*>> grid;
-    
+
 
 	/* Functions */
 	Map();

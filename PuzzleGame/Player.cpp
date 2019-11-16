@@ -20,6 +20,7 @@ Player::Player(int _gridX, int _gridY)
 {
 	gridX = _gridX;
 	gridY = _gridY;
+	int loc[2] = { gridX, gridY };
 	spaceX = gridX * Component::PIXEL_LENGTH;
 	spaceY = gridY * Component::PIXEL_LENGTH;
 
@@ -39,8 +40,9 @@ void Player::setPosition(int _gridX, int _gridY)
 	gridY = _gridY;
 }
 
-std::pair<int, int> Player::getPosition()
-{
+
+
+std::pair<int, int> Player::getPosition() {
 	return std::pair<int, int> {gridX, gridY};
 }
 

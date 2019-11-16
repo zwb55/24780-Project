@@ -1,7 +1,9 @@
 #include "Controller.h"
 #include <iostream>
 
+
 using namespace std;
+
 
 /*
 The default constructor of Controller class. Will initialize a controller class with level 0
@@ -52,7 +54,7 @@ bool Controller::isObstacle(vector<pair<int, int>> pos, int intend_x, int intend
 
 void Controller::update(int code)
 {
-	
+
 	if (code != 0 && !isAvailable()) {
 		return;
 	}
@@ -148,6 +150,7 @@ void Controller::update(int code)
 		rock.move();
 		pos.push_back(make_pair(rock.gridX,rock.gridY));
 	}
+
 }
 
 /*
@@ -191,8 +194,8 @@ void Controller::updateObjectInds() {
 					break;
 				case 'b':
 					int* doorLoc = map.grid[i][j]->corrCompLoc;
+
 					bool hasObstacle = isObstacle(pos, i, j);
-					cout << doorLoc[0] << doorLoc[1] << endl;
 					if ((loc.first == i && loc.second == j) || hasObstacle) {
 						map.grid[i][j]->state = false;
 						map.grid[doorLoc[0]][doorLoc[1]]->state = false;
