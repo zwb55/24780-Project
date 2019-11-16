@@ -7,7 +7,7 @@ class Switch : public Component
 {
 public:
 	/* Functions */
-	Switch(int _px, int _py);
+	Switch(int _px, int _py, int _doorx, int _doory);
 	void draw();
 	void update();
 	bool open = false;

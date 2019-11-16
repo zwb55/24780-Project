@@ -48,6 +48,9 @@ int main(void) {
 		case FSKEY_D:
 			gameController.update(4);
 			break;
+		case FSKEY_SPACE:
+			gameController.update(5);
+			break;
 		default:
 			gameController.update(0);
 		}

@@ -1,5 +1,6 @@
 #include "Controller.h"
 #include <iostream>
+#include "fssimplewindow.h"
 
 /*
 The default constructor of Controller class. Will initialize a controller class with level 0
@@ -85,17 +86,33 @@ void Controller::updateObjectInds() {
 				case 'p':
 					break;
 				case 'b':
-					std::cout << playerLoc.first << ", " << playerLoc.second << std::endl;
+				{
+					//std::cout << playerLoc.first << ", " << playerLoc.second << std::endl;
 					int* doorLoc = map.grid[i][j]->corrCompLoc;
 					if (playerLoc.first == i && playerLoc.second == j) {
 						map.grid[i][j]->state = false;
 						map.grid[doorLoc[0]][doorLoc[1]]->state = false;
-					} else {
+					}
+					else {
 						map.grid[i][j]->state = true;
 						map.grid[doorLoc[0]][doorLoc[1]]->state = true;
 					}
+				}
 					break;
 				case 'd':
+					break;
+				case 's':
+					int* doorLoc = map.grid[i][j]->corrCompLoc;
+					int direction1[4] = { 0,1,0,-1 };
+					int direction2[4] = { 1,0,-1,0 };
+					int nextX = playerLoc.first + direction1[player.face];
+					int nextY = playerLoc.second + direction2[player.face];
+					if (nextX == i && nextY == j)
+					{
+						map.grid[i][j]->state = true;
+						map.grid[doorLoc[0]][doorLoc[1]]->state = !map.grid[doorLoc[0]][doorLoc[1]]->state;
+					}
+					
 					break;
 			}
 		}
