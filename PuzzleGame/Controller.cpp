@@ -32,15 +32,7 @@ Controller::Controller(int _level): player(0, 0)
 
 }
 
-/*
-Perform update based on user input. Define the input code:
-0: No input
-1: Go up (positive y direction)
-2: Go down (negative y direction)
-3: Go left (negative x direction)
-4: Go right (positive x direction)
-5: Operation (open the door, switch the botton, etc)
-*/
+
 
 
 bool Controller::isObstacle(vector<pair<int, int>> pos, int intend_x, int intend_y)
@@ -53,6 +45,22 @@ bool Controller::isObstacle(vector<pair<int, int>> pos, int intend_x, int intend
 	return false;
 }
 
+/*
+Perform update based on user input. Define the input code:
+0: No input
+1: Go up (positive y direction)
+2: Go down (negative y direction)
+3: Go left (negative x direction)
+4: Go right (positive x direction)
+5: Operation (open the door, switch the botton, etc)
+
+0: No input
+1: Go up (positive y direction)
+2: Go right (positive x direction)
+3: Go down (negative y direction)
+4: Go left (negative x direction)
+5: Operation (open the door, switch the botton, etc)
+*/
 void Controller::update(int code)
 {
 
@@ -80,7 +88,7 @@ void Controller::update(int code)
 			}
 		}
 	}
-	else if (code == 2)
+	else if (code == 3)
 	{
 		int intend_x = player.gridX, intend_y = player.gridY - 1;
 		if (map.isValid(intend_x, intend_y) && !isObstacle(pos, intend_x, intend_y))
@@ -101,7 +109,7 @@ void Controller::update(int code)
 			}
 		}
 	}
-	else if (code == 3)
+	else if (code == 4)
 	{
 		int intend_x = player.gridX-1, intend_y = player.gridY;
 		if (map.isValid(intend_x, intend_y) && !isObstacle(pos, intend_x, intend_y))
@@ -122,7 +130,7 @@ void Controller::update(int code)
 			}
 		}
 	}
-	else if (code == 4)
+	else if (code == 2)
 	{
 		int intend_x = player.gridX+1, intend_y = player.gridY;
 		if (map.isValid(intend_x, intend_y) && !isObstacle(pos, intend_x, intend_y))

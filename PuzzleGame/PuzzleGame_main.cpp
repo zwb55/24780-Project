@@ -37,16 +37,16 @@ int main(void) {
 			terminate = true;
 			break;
 		case FSKEY_W:
-			gameController.update(1);
+			gameController.update(1 + (orbit.face) % 4);
+			break;
+		case FSKEY_D :
+			gameController.update(1 + (orbit.face + 1) % 4);
 			break;
 		case FSKEY_S:
-			gameController.update(2);
+			gameController.update(1 + (orbit.face + 2) % 4);
 			break;
 		case FSKEY_A:
-			gameController.update(3);
-			break;
-		case FSKEY_D:
-			gameController.update(4);
+			gameController.update(1 + (orbit.face + 3) % 4);
 			break;
 		case FSKEY_SPACE:
 			gameController.update(5);
@@ -76,6 +76,7 @@ int main(void) {
 		if (orbit.isorbiting)
 		{
 			orbit.changeview(clockwise);
+			cout << orbit.face << endl;
 		}
 
 		orbit.setUpCamera(camera);
