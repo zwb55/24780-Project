@@ -156,8 +156,8 @@ void Controller::update(int code)
 		std::pair<int, int> loc = player.getPosition();
 		int direction1[4] = { 0,1,0,-1 };
 		int direction2[4] = { 1,0,-1,0 };
-		int nextX = loc.first + direction1[player.face];
-		int nextY = loc.second + direction2[player.face];
+		int nextX = loc.first + direction1[player.face-1];
+		int nextY = loc.second + direction2[player.face-1];
 		if (nextX >= 0 && nextX < map.grid.size() && nextY >= 0 && nextY < map.grid[0].size())
 		{
 			if (map.grid[nextX][nextY]) {
