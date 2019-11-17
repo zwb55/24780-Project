@@ -65,6 +65,7 @@ void Controller::update(int code)
 	}
 	if (code == 1)
 	{
+		player.face=1;
 		int intend_x = player.gridX, intend_y = player.gridY + 1;
 		if(map.isValid(intend_x,intend_y)&&!isObstacle(pos,intend_x,intend_y))
 			player.setPosition(player.gridX, player.gridY + 1);
@@ -86,6 +87,7 @@ void Controller::update(int code)
 	}
 	else if (code == 3)
 	{
+		player.face=3;
 		int intend_x = player.gridX, intend_y = player.gridY - 1;
 		if (map.isValid(intend_x, intend_y) && !isObstacle(pos, intend_x, intend_y))
 			player.setPosition(player.gridX, player.gridY - 1);
@@ -107,6 +109,7 @@ void Controller::update(int code)
 	}
 	else if (code == 4)
 	{
+		player.face=4;
 		int intend_x = player.gridX-1, intend_y = player.gridY;
 		if (map.isValid(intend_x, intend_y) && !isObstacle(pos, intend_x, intend_y))
 			player.setPosition(player.gridX-1, player.gridY);
@@ -128,6 +131,7 @@ void Controller::update(int code)
 	}
 	else if (code == 2)
 	{
+		player.face=2;
 		int intend_x = player.gridX+1, intend_y = player.gridY;
 		if (map.isValid(intend_x, intend_y) && !isObstacle(pos, intend_x, intend_y))
 			player.setPosition(player.gridX+1, player.gridY);
