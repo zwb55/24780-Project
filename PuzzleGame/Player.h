@@ -8,7 +8,7 @@
 class Player {
 public:
 	/* Constants */
-	static const int MOVE_SPEED = 2;
+	static const int MOVE_SPEED = 1;
 
 	/* Member fields */
 	// define the current position on the grid
