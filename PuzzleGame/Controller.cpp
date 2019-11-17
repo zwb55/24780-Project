@@ -147,6 +147,25 @@ void Controller::update(int code)
 			}
 		}
 	}
+	else if (code == 5)
+	{
+		std::pair<int, int> loc = player.getPosition();
+		int direction1[4] = { 0,1,0,-1 };
+		int direction2[4] = { 1,0,-1,0 };
+		int nextX = loc.first + direction1[player.face];
+		int nextY = loc.second + direction2[player.face];
+		if (nextX >= 0 && nextX < map.grid.size() && nextY >= 0 && nextY < map.grid[0].size())
+		{
+			char componentID = map.grid[nextX][nextY]->ID;
+
+			if (componentID == 's')
+			{
+				int* doorLoc = map.grid[nextX][nextY]->corrCompLoc;
+				map.grid[nextX][nextY]->state = !map.grid[nextX][nextY]->state;
+				map.grid[doorLoc[0]][doorLoc[1]]->state = !map.grid[doorLoc[0]][doorLoc[1]]->state;
+			}
+		}
+	}
 
 	player.move();
 	pos.clear();
@@ -218,7 +237,7 @@ void Controller::updateObjectInds() {
 				case 'd':
 					break;
 				case 's':
-					int* doorLoc = map.grid[i][j]->corrCompLoc;
+					/*int* doorLoc = map.grid[i][j]->corrCompLoc;
 					int direction1[4] = { 0,1,0,-1 };
 					int direction2[4] = { 1,0,-1,0 };
 					int nextX = loc.first + direction1[player.face];
@@ -227,7 +246,7 @@ void Controller::updateObjectInds() {
 					{
 						map.grid[i][j]->state = true;
 						map.grid[doorLoc[0]][doorLoc[1]]->state = !map.grid[doorLoc[0]][doorLoc[1]]->state;
-					}
+					}*/
 					break;
 			}
 		}
