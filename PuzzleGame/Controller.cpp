@@ -156,13 +156,16 @@ void Controller::update(int code)
 		int nextY = loc.second + direction2[player.face];
 		if (nextX >= 0 && nextX < map.grid.size() && nextY >= 0 && nextY < map.grid[0].size())
 		{
-			char componentID = map.grid[nextX][nextY]->ID;
+			if (map.grid[nextX][nextY]) {
 
-			if (componentID == 'S')
-			{
-				int* doorLoc = map.grid[nextX][nextY]->corrCompLoc;
-				map.grid[nextX][nextY]->state = !map.grid[nextX][nextY]->state;
-				map.grid[doorLoc[0]][doorLoc[1]]->state = !map.grid[doorLoc[0]][doorLoc[1]]->state;
+				char componentID = map.grid[nextX][nextY]->ID;
+
+				if (componentID == 'S')
+				{
+					int* doorLoc = map.grid[nextX][nextY]->corrCompLoc;
+					map.grid[nextX][nextY]->state = !map.grid[nextX][nextY]->state;
+					map.grid[doorLoc[0]][doorLoc[1]]->state = !map.grid[doorLoc[0]][doorLoc[1]]->state;
+				}
 			}
 		}
 	}
