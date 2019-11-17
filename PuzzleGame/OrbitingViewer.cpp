@@ -65,9 +65,9 @@ void OrbitingViewer::changeface(bool clockwise)
 void OrbitingViewer::changeview(bool clockwise)
 {
 	if (clockwise)
-		theta += 2;
+		theta += 3;
 	else
-		theta -= 2;
+		theta -= 3;
 
 	if ((int)(theta) % 90 == 0)
 	{

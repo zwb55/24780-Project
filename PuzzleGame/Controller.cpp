@@ -49,6 +49,14 @@ bool Controller::isObstacle(vector<pair<int, int>> pos, int intend_x, int intend
 }
 
 /*
+Check whether pass the game
+*/
+bool Controller::pass()
+{
+	return isAvailable() && player.getPosition() == map.endPosition;
+}
+
+/*
 Perform update based on user input. Define the input code:
 0: No input
 1: Go up (positive y direction)

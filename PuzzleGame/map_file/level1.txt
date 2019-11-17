@@ -1,11 +1,11 @@
 10 10
-s p p p p b 3 4 p 0 0 0
-p p S 4 2 r p p p 0 0 0
+0 p p p p p p 0 0 0
+0 p p p p p e 0 0 0
 0 p p p p p p 0 0 0
 0 p p 0 0 0 0 0 0 0
 0 p p 0 0 0 0 0 0 0
-0 p p d p 0 0 0 0 0
-0 0 0 0 p 0 0 0 0 0
-0 0 0 0 d p p p 0 0
-0 0 0 0 0 p e p 0 0
-0 0 0 0 0 p p p 0 0
+p p p p 0 0 0 0 0 0
+0 p p p 0 0 0 0 0 0
+0 p p p 0 0 0 0 0 0
+0 p p p 0 0 0 0 0 0
+0 s p p 0 0 0 0 0 0

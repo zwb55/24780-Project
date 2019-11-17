@@ -22,6 +22,7 @@ public:
 	void updateObjectInds();
 	void draw();
 	bool isObstacle(vector<pair<int, int>> pos, int intend_x, int intend_y);
+	bool pass();
 
 private:
 	/* Member fields */

@@ -102,9 +102,6 @@ Map::Map(int level)
 						currComp = new Switch(j, num_row - 1 - i, tempx, tempy);
 						break;
 					}
-					
-
-
 					temp[j][num_row - 1 - i] = currComp;
 				}
 			}
@@ -115,6 +112,7 @@ Map::Map(int level)
 	else {
 		exit(1);
 	}
+	inFile.close();
 }
 
 Map::~Map() {
