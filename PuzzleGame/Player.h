@@ -18,6 +18,10 @@ public:
 	// define the current position on in the space
 	int spaceX;
 	int spaceY;
+	
+	//for amination
+	int temp;
+	float theta;
 
 	// define whether current player is moving
 	bool isMoving;
