@@ -158,7 +158,7 @@ void Controller::update(int code)
 		{
 			char componentID = map.grid[nextX][nextY]->ID;
 
-			if (componentID == 's')
+			if (componentID == 'S')
 			{
 				int* doorLoc = map.grid[nextX][nextY]->corrCompLoc;
 				map.grid[nextX][nextY]->state = !map.grid[nextX][nextY]->state;

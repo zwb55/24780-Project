@@ -3,7 +3,7 @@
 #include "DrawingUtilNG.h"
 #include "Plain.h"
 
-Switch::Switch(int _px, int _py, int _doorx, int _doory) : Component(_px, _py, false, 's') {
+Switch::Switch(int _px, int _py, int _doorx, int _doory) : Component(_px, _py, false, 'S') {
 	
 	color[0] = DrawingUtilNG::getRandom(0, 255);
 	color[1] = DrawingUtilNG::getRandom(0, 255);
