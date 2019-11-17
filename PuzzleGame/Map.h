@@ -14,10 +14,14 @@ public:
 
 	/* Member fields */
 	std::vector<std::vector<Component*>> grid;
+	std::pair<int, int> startPosition;
+	std::pair<int, int> endPosition;
+	std::vector<std::pair<int, int>> rockPositions;
 
 
 	/* Functions */
 	Map();
+	Map(int level);
 	~Map();
     void update();
 	void draw();

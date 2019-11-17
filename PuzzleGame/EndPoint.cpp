@@ -27,11 +27,11 @@ void EndPoint::draw() {
 
 	int pos = posZ;
 	glColor3ub(102, 0, 102);
-	DrawingUtilNG::drawCircle((px + 0.5) * Component::PIXEL_LENGTH, (px + 0.5) * Component::PIXEL_LENGTH, 0.01 * pos * Component::PIXEL_LENGTH - 10, Component::PIXEL_LENGTH / 3., true);
+	DrawingUtilNG::drawCircle((px + 0.5) * Component::PIXEL_LENGTH, (py + 0.5) * Component::PIXEL_LENGTH, 0.01 * pos * Component::PIXEL_LENGTH - 10, Component::PIXEL_LENGTH / 3., true);
 	glColor3ub(153, 0, 153);
-	DrawingUtilNG::drawCircle((px + 0.5) * Component::PIXEL_LENGTH, (px + 0.5) * Component::PIXEL_LENGTH, 0.01 * pos * Component::PIXEL_LENGTH - 5, Component::PIXEL_LENGTH / 3.5, true);
+	DrawingUtilNG::drawCircle((px + 0.5) * Component::PIXEL_LENGTH, (py + 0.5) * Component::PIXEL_LENGTH, 0.01 * pos * Component::PIXEL_LENGTH - 5, Component::PIXEL_LENGTH / 3.5, true);
 	glColor3ub(204, 0, 204);
-	DrawingUtilNG::drawCircle((px + 0.5) * Component::PIXEL_LENGTH, (px + 0.5) * Component::PIXEL_LENGTH, 0.01 * pos * Component::PIXEL_LENGTH, Component::PIXEL_LENGTH / 4., true);
+	DrawingUtilNG::drawCircle((px + 0.5) * Component::PIXEL_LENGTH, (py + 0.5) * Component::PIXEL_LENGTH, 0.01 * pos * Component::PIXEL_LENGTH, Component::PIXEL_LENGTH / 4., true);
 	posZ--;
 	if (posZ == 0)
 		posZ = 100;

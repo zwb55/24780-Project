@@ -9,8 +9,14 @@ using namespace std;
 /*
 The default constructor of Controller class. Will initialize a controller class with level 0
 */
-Controller::Controller(): Controller(0) {
-
+Controller::Controller(): player(0, 0) {
+	level = 0;
+	Rock rock1(4, 4);
+	Rock rock2(6, 6);
+	Rocks.push_back(rock1);
+	Rocks.push_back(rock2);
+	pos.push_back(make_pair(rock1.gridX,rock1.gridY));
+	pos.push_back(make_pair(rock2.gridX, rock2.gridY));
 }
 
 /*
@@ -20,19 +26,16 @@ but in the future will initialize a map with specific level by loading correspon
 Currently initialize the player at 0, 0. Will be developed in the future to initialize
 the player at starting point which is defined in map.
 */
-Controller::Controller(int _level): player(0, 0)
+Controller::Controller(int _level): map(_level), player(map.startPosition.first, map.startPosition.second)
 {
 	level = _level;
-	Rock rock1(4, 4);
-	Rock rock2(6, 6);
-	Rocks.push_back(rock1);
-	Rocks.push_back(rock2);
-	pos.push_back(make_pair(rock1.gridX,rock1.gridY));
-	pos.push_back(make_pair(rock2.gridX, rock2.gridY));
 
+	// add rocks from map
+	for (std::pair<int, int>& rockPos : map.rockPositions) {
+		Rock rock(rockPos.first, rockPos.second);
+		Rocks.push_back(rock);
+	}
 }
-
-
 
 
 bool Controller::isObstacle(vector<pair<int, int>> pos, int intend_x, int intend_y)
@@ -47,13 +50,6 @@ bool Controller::isObstacle(vector<pair<int, int>> pos, int intend_x, int intend
 
 /*
 Perform update based on user input. Define the input code:
-0: No input
-1: Go up (positive y direction)
-2: Go down (negative y direction)
-3: Go left (negative x direction)
-4: Go right (positive x direction)
-5: Operation (open the door, switch the botton, etc)
-
 0: No input
 1: Go up (positive y direction)
 2: Go right (positive x direction)
@@ -196,6 +192,9 @@ Updates the objectInds field of map with all the updated positions of objects
 void Controller::updateObjectInds() {
 	for (int i = 0; i < map.grid.size(); i++) {
 		for (int j = 0; j < map.grid[0].size(); j++) {
+			if (!map.grid[i][j]) {
+				continue;
+			}
 			char componentID = map.grid[i][j]->ID;
 			std::pair<int, int> loc = player.getPosition();
 			switch (componentID) {

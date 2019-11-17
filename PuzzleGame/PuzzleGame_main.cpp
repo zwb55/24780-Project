@@ -15,7 +15,7 @@ int main(void) {
 	bool clockwise = true;
 	Camera3D camera;
 	OrbitingViewer orbit;
-	Controller gameController;
+	Controller gameController(1);
 
 	// set the camera focus center
 	orbit.focusX= gameController.getCenter().first;
@@ -76,7 +76,6 @@ int main(void) {
 		if (orbit.isorbiting)
 		{
 			orbit.changeview(clockwise);
-			cout << orbit.face << endl;
 		}
 
 		orbit.setUpCamera(camera);
@@ -112,7 +111,6 @@ int main(void) {
 
 		FsSwapBuffers();
 		FsSleep(10);
-
 
 	}
 
