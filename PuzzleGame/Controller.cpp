@@ -1,10 +1,12 @@
 #include "Controller.h"
 #include <iostream>
 #include "fssimplewindow.h"
-
+#include <string>
+#include <fstream>
 
 using namespace std;
 
+const int KEY_NUM = 8;
 
 /*
 The default constructor of Controller class. Will initialize a controller class with level 0
@@ -28,12 +30,37 @@ the player at starting point which is defined in map.
 */
 Controller::Controller(int _level): map(_level), player(map.startPosition.first, map.startPosition.second)
 {
+	//ComicSansFont comicsans;
 	level = _level;
 
 	// add rocks from map
 	for (std::pair<int, int>& rockPos : map.rockPositions) {
 		Rock rock(rockPos.first, rockPos.second);
 		Rocks.push_back(rock);
+	}
+	if (level == 1) {
+		ifstream inFile1;
+		string filename1 = "initkey.txt";
+		inFile1.open(filename1);
+
+		if (inFile1.is_open()) {
+			for (int line = 0; line < KEY_NUM; line++)
+			{
+				double locX, locY;
+				double gapX, gapY;  // the gap between text and frame
+				int width;
+				int height;
+				double scale; // size of string
+				string text;
+				inFile1 >> locX >> locY >> gapX >> gapY >> width >> height >> scale >> text;
+				TeachingKey akey(locX, locY, gapX, gapY, width, height, scale, text);
+				Keys.push_back(akey);
+			}
+		}
+		else {
+			exit(1);
+		}
+		inFile1.close();
 	}
 }
 
@@ -53,7 +80,19 @@ Check whether pass the game
 */
 bool Controller::pass()
 {
+	if (level == 1)
+	{
+		for (int i = 0; i < Keys.size(); i++)
+		{
+			if (Keys[i].isPressed == false) return false;
+		}
+	}
 	return isAvailable() && player.getPosition() == map.endPosition;
+}
+
+void Controller::setkeypressed(int i)
+{
+	Keys[i].isPressed = true;
 }
 
 /*
@@ -85,7 +124,7 @@ void Controller::update(int code)
 				int j = 0;
 				for (;j<Rocks.size();j++)
 				{
-					if (Rocks[j].gridX == intend_x && Rocks[j].gridY == intend_y)
+					if (Rocks[j].gridX == intend_x && Rocks[j].gridY == intend_y) // decide which rock is going to be moved
 						break;
 				}
 				Rocks[j].setPosition(rock_next_x, rock_next_y);
@@ -169,11 +208,12 @@ void Controller::update(int code)
 		if (nextX >= 0 && nextX < map.grid.size() && nextY >= 0 && nextY < map.grid[0].size())
 		{
 			if (map.grid[nextX][nextY]) {
-
+				// if player is facing a switch
 				char componentID = map.grid[nextX][nextY]->ID;
 
 				if (componentID == 'S')
 				{
+					if (level == 1) setkeypressed(7);
 					int* doorLoc = map.grid[nextX][nextY]->corrCompLoc;
 					map.grid[nextX][nextY]->state = !map.grid[nextX][nextY]->state;
 					map.grid[doorLoc[0]][doorLoc[1]]->state = !map.grid[doorLoc[0]][doorLoc[1]]->state;
@@ -220,6 +260,17 @@ void Controller::draw()
 	}
 }
 
+void Controller::draw2D()
+{
+	if (level == 1)
+	{
+		for (int i = 0; i < Keys.size(); i++)
+		{
+			Keys[i].draw(comicsans);
+		}
+	}
+}
+
 /*
 Updates the objectInds field of map with all the updated positions of objects
 */
@@ -242,6 +293,7 @@ void Controller::updateObjectInds() {
 					if ((loc.first == i && loc.second == j) || hasObstacle) {
 						map.grid[i][j]->state = false;
 						map.grid[doorLoc[0]][doorLoc[1]]->state = false;
+						if (level == 1) setkeypressed(6);
 					}
 					else {
 						map.grid[i][j]->state = true;
@@ -252,16 +304,6 @@ void Controller::updateObjectInds() {
 				case 'd':
 					break;
 				case 's':
-					/*int* doorLoc = map.grid[i][j]->corrCompLoc;
-					int direction1[4] = { 0,1,0,-1 };
-					int direction2[4] = { 1,0,-1,0 };
-					int nextX = loc.first + direction1[player.face];
-					int nextY = loc.second + direction2[player.face];
-					if (nextX == i && nextY == j)
-					{
-						map.grid[i][j]->state = true;
-						map.grid[doorLoc[0]][doorLoc[1]]->state = !map.grid[doorLoc[0]][doorLoc[1]]->state;
-					}*/
 					break;
 			}
 		}

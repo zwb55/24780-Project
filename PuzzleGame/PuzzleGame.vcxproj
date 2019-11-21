@@ -140,6 +140,7 @@
     <ClInclude Include="Rock.h" />
     <ClInclude Include="StartPoint.h" />
     <ClInclude Include="Switch.h" />
+    <ClInclude Include="Teaching.h" />
     <ClInclude Include="ysglfontdata.h" />
     <ClInclude Include="yspng.h" />
     <ClInclude Include="yssimplesound.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="Rock.cpp" />
     <ClCompile Include="StartPoint.cpp" />
     <ClCompile Include="Switch.cpp" />
+    <ClCompile Include="Teaching.cpp" />
     <ClCompile Include="ysglfontdata.c" />
     <ClCompile Include="yspng.cpp" />
     <ClCompile Include="yssimplesound.cpp" />

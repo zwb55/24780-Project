@@ -1,10 +1,10 @@
 10 10
-0 p p p p p p 0 0 0
-0 p p p p p e 0 0 0
-0 p p p p p p 0 0 0
+0 p p p p p d 0 0 0
+0 p S 6 9 p p p e 0 0 0
+0 p p p p p d 0 0 0
 0 p p 0 0 0 0 0 0 0
 0 p p 0 0 0 0 0 0 0
-p p p p 0 0 0 0 0 0
+b 6 7 p p p 0 0 0 0 0 0
 0 p p p 0 0 0 0 0 0
 0 p p p 0 0 0 0 0 0
 0 p p p 0 0 0 0 0 0

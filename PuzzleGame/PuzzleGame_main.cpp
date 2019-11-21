@@ -1,3 +1,8 @@
+/*
+This is the copy of our project
+For test
+*/
+
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
@@ -40,15 +45,19 @@ int gamePlay(Camera3D& camera, OrbitingViewer& orbit, Controller* gameController
 			break;
 		case FSKEY_W:
 			gameController->update(1 + (orbit.face) % 4);
+			if (gameController->getcurrLevel() == 1) gameController->setkeypressed(0);
 			break;
 		case FSKEY_D:
 			gameController->update(1 + (orbit.face + 1) % 4);
+			if (gameController->getcurrLevel() == 1) gameController->setkeypressed(3);
 			break;
 		case FSKEY_S:
 			gameController->update(1 + (orbit.face + 2) % 4);
+			if (gameController->getcurrLevel() == 1) gameController->setkeypressed(2);
 			break;
 		case FSKEY_A:
 			gameController->update(1 + (orbit.face + 3) % 4);
+			if (gameController->getcurrLevel() == 1) gameController->setkeypressed(1);
 			break;
 		case FSKEY_SPACE:
 			gameController->update(5);
@@ -64,12 +73,14 @@ int gamePlay(Camera3D& camera, OrbitingViewer& orbit, Controller* gameController
 		{
 			orbit.isorbiting = true;
 			clockwise = true;
+			if (gameController->getcurrLevel() == 1) gameController->setkeypressed(4);
 		}
 
 		if (0 != FsGetKeyState(FSKEY_RIGHT) && !orbit.isorbiting)
 		{
 			orbit.isorbiting = true;
 			clockwise = false;
+			if (gameController->getcurrLevel() == 1) gameController->setkeypressed(5);
 		}
 
 		if (0 != FsGetKeyState(FSKEY_UP) && orbit.r < 500)
@@ -110,11 +121,15 @@ int gamePlay(Camera3D& camera, OrbitingViewer& orbit, Controller* gameController
 		// 3D drawing from here
 		gameController->draw();
 
+		// 2D drawing from here
 		glMatrixMode(GL_PROJECTION); // Tell opengl that we are doing project matrix work
 		glLoadIdentity(); // Clear the matrix
-		glOrtho(-9.0, 9.0, -9.0, 9.0, 0.0, 30.0); // Setup an Ortho view
+		glOrtho(0, (float)wid - 1, (float)hei - 1, 0, -1, 1);
+		//glOrtho(-9.0, 9.0, -9.0, 9.0, 0.0, 30.0); // Setup an Ortho view
 		glMatrixMode(GL_MODELVIEW); // Tell opengl that we are doing model matrix work. (drawing)
 		glLoadIdentity(); // Clear the model matrix
+		glDisable(GL_DEPTH_TEST);
+		gameController->draw2D();
 
 		FsSwapBuffers();
 		FsSleep(10);

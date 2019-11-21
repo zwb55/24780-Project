@@ -1,143 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Camera3D.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="Door.cpp" />
+    <ClCompile Include="DrawingUtilNG.cpp" />
+    <ClCompile Include="EndPoint.cpp" />
+    <ClCompile Include="fssimplewindow.cpp" />
+    <ClCompile Include="GraphicFont.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="OrbitingViewer.cpp" />
+    <ClCompile Include="Plain.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PuzzleGame_main.cpp" />
+    <ClCompile Include="Rock.cpp" />
+    <ClCompile Include="StartPoint.cpp" />
+    <ClCompile Include="Switch.cpp" />
+    <ClCompile Include="ysglfontdata.c" />
+    <ClCompile Include="yspng.cpp" />
+    <ClCompile Include="yssimplesound.cpp" />
+    <ClCompile Include="yssimplesound_dsound.cpp" />
+    <ClCompile Include="Teaching.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="yssimplesound.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera3D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="fssimplewindow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ysglfontdata.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="yspng.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Plain.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DrawingUtilNG.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="OrbitingViewer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicFont.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Controller.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StartPoint.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EndPoint.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Door.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Rock.h">
-=======
-    <ClInclude Include="Switch.h">
->>>>>>> 441986bf1ebcc74cc4d9a89780c2d4d46d315267
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="yssimplesound_dsound.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera3D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="fssimplewindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ysglfontdata.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="yspng.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="yssimplesound.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="PuzzleGame_main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Plain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DrawingUtilNG.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="OrbitingViewer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicFont.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Controller.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StartPoint.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EndPoint.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Door.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Rock.cpp">
-=======
-    <ClCompile Include="Switch.cpp">
->>>>>>> 441986bf1ebcc74cc4d9a89780c2d4d46d315267
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="Camera3D.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="Controller.h" />
+    <ClInclude Include="Door.h" />
+    <ClInclude Include="DrawingUtilNG.h" />
+    <ClInclude Include="EndPoint.h" />
+    <ClInclude Include="fssimplewindow.h" />
+    <ClInclude Include="GraphicFont.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="OrbitingViewer.h" />
+    <ClInclude Include="Plain.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Rock.h" />
+    <ClInclude Include="StartPoint.h" />
+    <ClInclude Include="Switch.h" />
+    <ClInclude Include="ysglfontdata.h" />
+    <ClInclude Include="yspng.h" />
+    <ClInclude Include="yssimplesound.h" />
+    <ClInclude Include="Teaching.h" />
   </ItemGroup>
 </Project>
