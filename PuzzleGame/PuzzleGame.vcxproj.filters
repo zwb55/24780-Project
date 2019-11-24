@@ -23,6 +23,7 @@
     <ClCompile Include="yssimplesound.cpp" />
     <ClCompile Include="yssimplesound_dsound.cpp" />
     <ClCompile Include="Teaching.cpp" />
+    <ClCompile Include="starfield.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
@@ -45,5 +46,6 @@
     <ClInclude Include="yspng.h" />
     <ClInclude Include="yssimplesound.h" />
     <ClInclude Include="Teaching.h" />
+    <ClInclude Include="starfield.h" />
   </ItemGroup>
 </Project>

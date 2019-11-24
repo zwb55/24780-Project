@@ -131,6 +131,7 @@ int gamePlay(Camera3D& camera, OrbitingViewer& orbit, Controller* gameController
 		glDisable(GL_DEPTH_TEST);
 		gameController->draw2D();
 
+		gameController->drawBackground();
 		FsSwapBuffers();
 		FsSleep(10);
 	}

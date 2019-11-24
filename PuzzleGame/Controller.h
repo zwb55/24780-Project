@@ -27,6 +27,8 @@ public:
 	bool pass();
 	void setkeypressed(int i);
 	int getcurrLevel() { return level; }
+	void drawBackground();
+
 private:
 	/* Member fields */
 	Map map;

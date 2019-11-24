@@ -1,4 +1,5 @@
 #include "Controller.h"
+#include "starfield.h"
 #include <iostream>
 #include "fssimplewindow.h"
 #include <string>
@@ -61,6 +62,26 @@ Controller::Controller(int _level): map(_level), player(map.startPosition.first,
 			exit(1);
 		}
 		inFile1.close();
+	}
+}
+
+void Controller::drawBackground()
+{
+	int wid, hei;
+	FsGetWindowSize(wid, hei);
+	vector<star> Stars;
+	for (int i = 0; i < 600; i++)
+	{
+		star aStar;
+		aStar.initialize(1200, 800);
+		Stars.push_back(aStar);
+	}
+	for (auto& Star : Stars)
+	{
+		Star.move(wid, hei);
+		if (Star.out(wid, hei))
+			Star.initialize(wid, hei);
+		Star.draw();
 	}
 }
 
