@@ -29,7 +29,7 @@ but in the future will initialize a map with specific level by loading correspon
 Currently initialize the player at 0, 0. Will be developed in the future to initialize
 the player at starting point which is defined in map.
 */
-Controller::Controller(int _level): map(_level), player(map.startPosition.first, map.startPosition.second), zombie(2, 6, 1)
+Controller::Controller(int _level): map(_level), player(map.startPosition.first, map.startPosition.second), zombie(map.zombiePosition.first, map.zombiePosition.second, 1)
 {
 	//ComicSansFont comicsans;
 	level = _level;
@@ -295,6 +295,7 @@ void Controller::updateObjectInds() {
 			}
 			char componentID = map.grid[i][j]->ID;
 			std::pair<int, int> loc = player.getPosition();
+			std::pair<int, int> loc1 = player.getPosition();
 			switch (componentID) {
 				case 'p':
 					break;
@@ -303,7 +304,7 @@ void Controller::updateObjectInds() {
 					int* doorLoc = map.grid[i][j]->corrCompLoc;
 
 					bool hasObstacle = isObstacle(pos, i, j);
-					if ((loc.first == i && loc.second == j) || hasObstacle) {
+					if ((loc.first == i && loc.second == j)||(loc1.first == i && loc1.second == j) || hasObstacle) {
 						map.grid[i][j]->state = false;
 						map.grid[doorLoc[0]][doorLoc[1]]->state = false;
 						if (level == 1) setkeypressed(6);
