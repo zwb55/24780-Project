@@ -94,7 +94,7 @@ Map::Map(int level)
 						break;
 					case 'r':
 						currComp = new Plain(j, num_row - 1 - i);
-						rockPositions.push_back(std::pair<int, int>{i, num_row - 1 - i});
+						rockPositions.push_back(std::pair<int, int>{j, num_row - 1 - i});
 						break;
 					case 'S':
 						inFile >> tempx;
