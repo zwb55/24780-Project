@@ -14,6 +14,10 @@ Zombie::Zombie(int _gridX, int _gridY, int direction): Player(_gridX, _gridY) {
 	setDireciton(direction);
 }
 
+std::pair<int, int>Zombie::getPosition(){
+	return std::pair<int,int>{gridX,gridY};
+}
+
 void Zombie::setDireciton(int code) {
 	dirCode = code;
 	switch (code) {
@@ -39,16 +43,16 @@ void Zombie::setDireciton(int code) {
 void Zombie::flipDirection() {
 	switch (dirCode) {
 		case 1:
-			setDireciton(3);
-			break;
-		case 3:
-			setDireciton(1);
-			break;
-		case 2:
 			setDireciton(4);
 			break;
-		case 4:
+		case 3:
 			setDireciton(2);
+			break;
+		case 2:
+			setDireciton(1);
+			break;
+		case 4:
+			setDireciton(3);
 			break;
 	}
 }
@@ -98,6 +102,7 @@ void Zombie::move(bool valid) {
 }
 
 void Zombie::draw() {
+	if(gridX>=0){
 	//DrawingUtilNG::drawCube(spaceX, spaceY, 0, spaceX + Component::PIXEL_LENGTH, spaceY + Component::PIXEL_LENGTH, 20, true);
 	temp += 1;
 	glPushMatrix();
@@ -156,5 +161,6 @@ void Zombie::draw() {
 			DrawingUtilNG::drawCube(0.2 * Component::PIXEL_LENGTH, 0.05 * Component::PIXEL_LENGTH, -0.25 * Component::PIXEL_LENGTH, 0.3 * Component::PIXEL_LENGTH, 0.15 * Component::PIXEL_LENGTH, 0, false);
 			glPopMatrix();
 		}
+	}
 	}
 }
