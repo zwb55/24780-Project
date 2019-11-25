@@ -59,6 +59,8 @@ Map::Map(int level)
 		while (!inFile.eof()) {
 			inFile >> num_row;
 			inFile >> num_col;
+			inFile >> zombiePosition.first;
+			inFile >> zombiePosition.second;
 
 			std::vector<std::vector<Component*>> temp(num_col, std::vector<Component*>(num_row, nullptr));
 
