@@ -16,7 +16,7 @@ For test
 #include "GraphicFont.h"
 #include "starfield.h"
 
-const int MAX_LEVEL = 7;
+const int MAX_LEVEL = 8;
 
 /*
 Define the main logic and display during one game, return an int code according
