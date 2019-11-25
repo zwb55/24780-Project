@@ -16,7 +16,7 @@ For test
 #include "GraphicFont.h"
 #include "starfield.h"
 
-const int MAX_LEVEL = 8;
+const int MAX_LEVEL = 9;
 
 /* the 2 png using in start scene*/
 YsRawPngDecoder png[2];
