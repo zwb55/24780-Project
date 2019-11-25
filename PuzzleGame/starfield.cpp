@@ -9,8 +9,8 @@ using namespace std;
 
 
 void star::initialize(int width, int height) {
-	CX = 1.0f * (rand() % width);
-	CY = 1.0f * (rand() % height);
+	CX = 1.0f * (rand() % (width+1));
+	CY = 1.0f * (rand() % (height+1));
 	z = 0.0001;
 }
 void star::draw() {

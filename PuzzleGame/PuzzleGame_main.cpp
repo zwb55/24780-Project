@@ -34,9 +34,12 @@ Return:
 2: pass the game, should go to next level (maybe with some transition animations), 
 	if it's the final level, back to main window
 */
-int gamePlay(Camera3D& camera, OrbitingViewer& orbit, Controller* gameController) {
+int gamePlay(Camera3D& camera, OrbitingViewer& orbit, Controller* gameController, JokermanFont& jokerman) {
 	bool terminate = false;
 	bool clockwise = true;
+
+	int leftButton, middleButton, rightButton, locX, locY;
+	int mouseEvent;
 
 	vector<star> Stars;
 	for (int i = 0; i < 600; i++)
@@ -53,11 +56,13 @@ int gamePlay(Camera3D& camera, OrbitingViewer& orbit, Controller* gameController
 	while (!terminate)
 	{
 		int key = FsInkey();
+		mouseEvent = FsGetMouseEvent(leftButton, middleButton, rightButton, locX, locY);
+
 		switch (key)
 		{
-		case FSKEY_ESC:
+		/*case FSKEY_ESC:
 			terminate = true;
-			break;
+			break;*/
 		case FSKEY_W:
 			gameController->update(1 + (orbit.face) % 4);
 			if (gameController->getcurrLevel() == 1) gameController->setkeypressed(0);
@@ -77,12 +82,19 @@ int gamePlay(Camera3D& camera, OrbitingViewer& orbit, Controller* gameController
 		case FSKEY_SPACE:
 			gameController->update(5);
 			break;
-		case FSKEY_R:
-			// reset current game
-			return 1;
+		//case FSKEY_R:
+		//	// reset current game
+		//	return 1;
 		default:
 			gameController->update(0);
 		}
+
+		if (mouseEvent == FSMOUSEEVENT_LBUTTONDOWN &&
+			locX > 0 && locX < 200 &&
+			locY > 730 && locY < 790)    terminate = true;
+		if (mouseEvent == FSMOUSEEVENT_LBUTTONDOWN &&
+			locX > 1000 && locX < 1200 &&
+			locY > 730 && locY < 790)   return 1;
 
 		if (0 != FsGetKeyState(FSKEY_LEFT) && !orbit.isorbiting)
 		{
@@ -134,18 +146,21 @@ int gamePlay(Camera3D& camera, OrbitingViewer& orbit, Controller* gameController
 		glPolygonOffset(1, 1);
 
 		// 3D drawing from here
+
+		// draw game
 		gameController->draw();
 
 		// 2D drawing from here
 		glMatrixMode(GL_PROJECTION); // Tell opengl that we are doing project matrix work
 		glLoadIdentity(); // Clear the matrix
 		glOrtho(0, (float)wid - 1, (float)hei - 1, 0, -1, 1);
-		//glOrtho(-9.0, 9.0, -9.0, 9.0, 0.0, 30.0); // Setup an Ortho view
 		glMatrixMode(GL_MODELVIEW); // Tell opengl that we are doing model matrix work. (drawing)
 		glLoadIdentity(); // Clear the model matrix
 		glDisable(GL_DEPTH_TEST);
 		gameController->draw2D();
 
+
+		// draw star
 		for (auto& Star : Stars)
 		{
 			Star.move(wid, hei);
@@ -153,6 +168,14 @@ int gamePlay(Camera3D& camera, OrbitingViewer& orbit, Controller* gameController
 				Star.initialize(wid, hei);
 			Star.draw();
 		}
+
+		// draw reset and home
+		jokerman.setColorHSV(0, 0, 100);
+		jokerman.drawText("< HOME", 0, 790, 0.5, 0);
+		jokerman.drawText("RESET", 1030, 790, 0.5, 0);
+		//glColor3ub(255, 255, 255);
+		//DrawingUtilNG::drawRectangle(0, 730, 200, 50, false);
+
 		FsSwapBuffers();
 		FsSleep(10);
 	}
@@ -173,7 +196,7 @@ Press ESC to go back to main window
 int main(void) {
 	srand(time(NULL));
 	bool terminate = false;
-	int currLevel = 7;
+	int currLevel = 1;
 
 	int leftButton, middleButton, rightButton, locX, locY;
 	int mouseEvent;
@@ -204,7 +227,7 @@ int main(void) {
 			|| returnCode != 0) {
 			// start a new game
 			gameController = new Controller(currLevel);
-			returnCode = gamePlay(camera, orbit, gameController);
+			returnCode = gamePlay(camera, orbit, gameController,jokerman);
 			delete gameController;
 		}
 		
