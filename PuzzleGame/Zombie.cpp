@@ -43,19 +43,24 @@ void Zombie::setDireciton(int code) {
 void Zombie::flipDirection() {
 	switch (dirCode) {
 		case 1:
-			setDireciton(4);
+			if (temp % 80 < 20)
+				setDireciton(4);
 			break;
 		case 3:
-			setDireciton(2);
+			if ((temp % 80 >= 40) && (temp % 80 < 60))
+				setDireciton(2);
 			break;
 		case 2:
-			setDireciton(1);
+			if (temp % 80 > 60)
+				setDireciton(1);
 			break;
 		case 4:
-			setDireciton(3);
+			if ((temp % 80 >= 20) && (temp % 80 < 40))
+				setDireciton(3);
 			break;
 	}
 }
+
 
 void Zombie::move(bool valid) {
 
