@@ -65,27 +65,6 @@ Controller::Controller(int _level): map(_level), player(map.startPosition.first,
 	}
 }
 
-void Controller::drawBackground()
-{
-	int wid, hei;
-	FsGetWindowSize(wid, hei);
-	vector<star> Stars;
-	for (int i = 0; i < 600; i++)
-	{
-		star aStar;
-		aStar.initialize(1200, 800);
-		Stars.push_back(aStar);
-	}
-	for (auto& Star : Stars)
-	{
-		Star.move(wid, hei);
-		if (Star.out(wid, hei))
-			Star.initialize(wid, hei);
-		Star.draw();
-	}
-}
-
-
 bool Controller::isObstacle(vector<pair<int, int>> pos, int intend_x, int intend_y)
 {
 	for (int i = 0; i < pos.size(); i++)
