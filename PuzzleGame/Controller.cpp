@@ -295,7 +295,7 @@ void Controller::updateObjectInds() {
 			}
 			char componentID = map.grid[i][j]->ID;
 			std::pair<int, int> loc = player.getPosition();
-			std::pair<int, int> loc1 = player.getPosition();
+			std::pair<int, int> loc1 = zombie.getPosition();
 			switch (componentID) {
 				case 'p':
 					break;
