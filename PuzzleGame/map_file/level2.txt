@@ -1,4 +1,4 @@
-10 10
+10 10 -2 -2
 s p p p p b 3 4 p 0 0 0
 p p S 4 2 r p p p 0 0 0
 0 p p p p p p 0 0 0
