@@ -145,6 +145,7 @@
     <ClInclude Include="ysglfontdata.h" />
     <ClInclude Include="yspng.h" />
     <ClInclude Include="yssimplesound.h" />
+    <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
@@ -170,6 +171,7 @@
     <ClCompile Include="yspng.cpp" />
     <ClCompile Include="yssimplesound.cpp" />
     <ClCompile Include="yssimplesound_dsound.cpp" />
+    <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
