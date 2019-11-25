@@ -7,5 +7,5 @@
 0 0 0 r p r 0 0 0 p
 0 0 0 p r p 0 0 0 p
 0 0 0 p p p 0 0 0 p
-0 0 0 0 b 6 1 p d p p p
+0 0 0 0 b 7 1 p p d p p
 0 0 0 0 0 0 0 0 0 0 
