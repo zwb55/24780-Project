@@ -6,6 +6,7 @@
 #pragma once
 #include "Map.h"
 #include "Player.h"
+#include "Zombie.h"
 #include "Rock.h"
 #include "Teaching.h"
 #include <vector>
@@ -31,6 +32,7 @@ private:
 	/* Member fields */
 	Map map;
 	Player player;
+	Zombie zombie;
 
 	/*
 	used in the first level
@@ -49,6 +51,7 @@ private:
 
 
 	std::vector<Rock> Rocks;
+	std::vector<Player> Zombies;
 	// pos records all the positions of rocks. May contains zombies later...
 	vector<pair<int, int>> pos;
 

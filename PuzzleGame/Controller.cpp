@@ -11,7 +11,7 @@ const int KEY_NUM = 8;
 /*
 The default constructor of Controller class. Will initialize a controller class with level 0
 */
-Controller::Controller(): player(0, 0) {
+Controller::Controller(): player(0, 0), zombie(1, 1, 1) {
 	level = 0;
 	Rock rock1(4, 4);
 	Rock rock2(6, 6);
@@ -28,11 +28,11 @@ but in the future will initialize a map with specific level by loading correspon
 Currently initialize the player at 0, 0. Will be developed in the future to initialize
 the player at starting point which is defined in map.
 */
-Controller::Controller(int _level): map(_level), player(map.startPosition.first, map.startPosition.second)
+Controller::Controller(int _level): map(_level), player(map.startPosition.first, map.startPosition.second), zombie(2, 6, 1)
 {
 	//ComicSansFont comicsans;
 	level = _level;
-
+	
 	// add rocks from map
 	for (std::pair<int, int>& rockPos : map.rockPositions) {
 		Rock rock(rockPos.first, rockPos.second);
@@ -62,6 +62,7 @@ Controller::Controller(int _level): map(_level), player(map.startPosition.first,
 		}
 		inFile1.close();
 	}
+	
 }
 
 
@@ -106,10 +107,11 @@ Perform update based on user input. Define the input code:
 */
 void Controller::update(int code)
 {
-
+	
 	if (code != 0 && !isAvailable()) {
 		return;
 	}
+	
 	if (code == 1)
 	{
 		player.face=1;
@@ -221,7 +223,17 @@ void Controller::update(int code)
 			}
 		}
 	}
-
+	
+	
+	bool valid;
+	int zombie_intendX = zombie.gridX + zombie.dirX, zombie_intendY = zombie.gridY + zombie.dirY;
+	if (map.isValid(zombie_intendX, zombie_intendY) && !isObstacle(pos, zombie_intendX, zombie_intendY))
+		valid = true;
+	else
+		valid = false;
+	
+	zombie.move(valid);
+	
 	player.move();
 	pos.clear();
 	for (auto rock : Rocks)
@@ -254,6 +266,7 @@ void Controller::draw()
 	updateObjectInds();
 	map.draw();
 	player.draw();
+	zombie.draw();
 	for (int i = 0; i < Rocks.size(); i++)
 	{
 		Rocks[i].draw();
