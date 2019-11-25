@@ -15,7 +15,7 @@ For test
 #include <iostream>
 #include "GraphicFont.h"
 
-const int MAX_LEVEL = 2;
+const int MAX_LEVEL = 7;
 
 /*
 Define the main logic and display during one game, return an int code according
