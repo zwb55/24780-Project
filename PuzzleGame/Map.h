@@ -16,6 +16,7 @@ public:
 	std::vector<std::vector<Component*>> grid;
 	std::pair<int, int> startPosition;
 	std::pair<int, int> endPosition;
+	std::pair<int, int> zombiePosition;
 	std::vector<std::pair<int, int>> rockPositions;
 
 
