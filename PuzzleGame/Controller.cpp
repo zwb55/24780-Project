@@ -1,4 +1,5 @@
 #include "Controller.h"
+#include "starfield.h"
 #include <iostream>
 #include "fssimplewindow.h"
 #include <string>
@@ -64,7 +65,6 @@ Controller::Controller(int _level): map(_level), player(map.startPosition.first,
 	}
 	
 }
-
 
 bool Controller::isObstacle(vector<pair<int, int>> pos, int intend_x, int intend_y)
 {

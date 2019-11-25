@@ -28,6 +28,8 @@ public:
 	bool pass();
 	void setkeypressed(int i);
 	int getcurrLevel() { return level; }
+	
+
 private:
 	/* Member fields */
 	Map map;

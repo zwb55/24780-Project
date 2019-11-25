@@ -14,8 +14,9 @@ For test
 #include "Controller.h"
 #include <iostream>
 #include "GraphicFont.h"
+#include "starfield.h"
 
-const int MAX_LEVEL = 2;
+const int MAX_LEVEL = 7;
 
 /*
 Define the main logic and display during one game, return an int code according
@@ -30,6 +31,14 @@ Return:
 int gamePlay(Camera3D& camera, OrbitingViewer& orbit, Controller* gameController) {
 	bool terminate = false;
 	bool clockwise = true;
+
+	vector<star> Stars;
+	for (int i = 0; i < 600; i++)
+	{
+		star aStar;
+		aStar.initialize(1200, 800);
+		Stars.push_back(aStar);
+	}
 
 	// set the camera focus center
 	orbit.focusX = gameController->getCenter().first;
@@ -131,6 +140,13 @@ int gamePlay(Camera3D& camera, OrbitingViewer& orbit, Controller* gameController
 		glDisable(GL_DEPTH_TEST);
 		gameController->draw2D();
 
+		for (auto& Star : Stars)
+		{
+			Star.move(wid, hei);
+			if (Star.out(wid, hei))
+				Star.initialize(wid, hei);
+			Star.draw();
+		}
 		FsSwapBuffers();
 		FsSleep(10);
 	}
