@@ -28,6 +28,7 @@ public:
 	/* Functions */
 	Zombie(int _gridX, int _gridY, int direction);
 	void setDireciton(int code);
+	std::pair<int,int>getPosition();
 	void flipDirection();
 	void move(bool valid);
 	void draw();
