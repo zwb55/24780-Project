@@ -9,6 +9,7 @@
 #include "Zombie.h"
 #include "Rock.h"
 #include "Teaching.h"
+#include "yssimplesound.h"
 #include <vector>
 
 using namespace std;
@@ -28,6 +29,17 @@ public:
 	bool pass();
 	void setkeypressed(int i);
 	int getcurrLevel() { return level; }
+
+	void loadSound();
+	void playerStart() { myPlayer.Start(); }
+	void playSoundboing() {
+		if (soundOK)
+			myPlayer.PlayBackground(boingData, true);
+	}
+	void playSounddoor() {
+		if (soundOK)
+			myPlayer.PlayBackground(doorData, true);
+	}
 	
 
 private:
@@ -62,5 +74,10 @@ private:
 
 	/* Functions */
 	bool isAvailable();
+
+	static YsSoundPlayer::SoundData boingData;
+	static YsSoundPlayer::SoundData doorData;
+	static bool soundOK;
+	static YsSoundPlayer myPlayer;
 
 };

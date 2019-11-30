@@ -24,6 +24,9 @@ GLuint texId[2];
 void init_pngs();
 void drawStartScene(JokermanFont& jokerman, double& theta, double& delta);
 
+/* load game bgm*/
+void bgmLoadSound(bool& bgmsoundOK, YsSoundPlayer::SoundData& bgmData);
+
 /*
 Define the main logic and display during one game, return an int code according
 to different end state of the game:
@@ -53,6 +56,9 @@ int gamePlay(Camera3D& camera, OrbitingViewer& orbit, Controller* gameController
 	orbit.focusX = gameController->getCenter().first;
 	orbit.focusY = gameController->getCenter().second;
 
+	// prepare for sound
+	gameController->playerStart();
+
 	while (!terminate)
 	{
 		int key = FsInkey();
@@ -60,9 +66,6 @@ int gamePlay(Camera3D& camera, OrbitingViewer& orbit, Controller* gameController
 
 		switch (key)
 		{
-		/*case FSKEY_ESC:
-			terminate = true;
-			break;*/
 		case FSKEY_W:
 			gameController->update(1 + (orbit.face) % 4);
 			if (gameController->getcurrLevel() == 1) gameController->setkeypressed(0);
@@ -82,20 +85,19 @@ int gamePlay(Camera3D& camera, OrbitingViewer& orbit, Controller* gameController
 		case FSKEY_SPACE:
 			gameController->update(5);
 			break;
-		//case FSKEY_R:
-		//	// reset current game
-		//	return 1;
 		default:
 			gameController->update(0);
 		}
-
+		// if user presses the HOME
 		if (mouseEvent == FSMOUSEEVENT_LBUTTONDOWN &&
 			locX > 0 && locX < 200 &&
 			locY > 730 && locY < 790)    terminate = true;
+		// if user presses the RESET
 		if (mouseEvent == FSMOUSEEVENT_LBUTTONDOWN &&
 			locX > 1000 && locX < 1200 &&
 			locY > 730 && locY < 790)   return 1;
 
+		// change camera's view
 		if (0 != FsGetKeyState(FSKEY_LEFT) && !orbit.isorbiting)
 		{
 			orbit.isorbiting = true;
@@ -159,7 +161,6 @@ int gamePlay(Camera3D& camera, OrbitingViewer& orbit, Controller* gameController
 		glDisable(GL_DEPTH_TEST);
 		gameController->draw2D();
 
-
 		// draw star
 		for (auto& Star : Stars)
 		{
@@ -209,7 +210,17 @@ int main(void) {
 	Controller* gameController;
 	int returnCode = 0;
 
+	// game bgm
+	YsSoundPlayer::SoundData bgmData;
+	bool bgmsoundOK = false;
+	YsSoundPlayer bgmPlayer;
+	bgmLoadSound(bgmsoundOK, bgmData);
+
 	FsOpenWindow(16, 16, 1200, 800, 1);
+	bgmPlayer.Start();
+	if (bgmsoundOK)
+		bgmPlayer.PlayBackground(bgmData, false);
+
 
 	JokermanFont jokerman;
 	init_pngs();
@@ -333,4 +344,17 @@ void drawStartScene(JokermanFont& jokerman, double& theta, double& delta)
 	jokerman.drawText("MINI  MAZE", 230, 264, 1.2, 0);
 	jokerman.setColorHSV(0, 0, 100);
 	jokerman.drawText("START!", 430, 720, 0.8, theta);
+}
+
+void bgmLoadSound(bool& bgmsoundOK, YsSoundPlayer::SoundData& bgmData)
+{
+	char fName[256] = "gamebgm.wav";
+
+	if (YSOK != bgmData.LoadWav(fName))
+	{
+		cout << "Failed to read sound file " << fName << endl;;
+		bgmsoundOK = false;
+	}
+	else
+		bgmsoundOK = true;
 }

@@ -9,6 +9,11 @@ using namespace std;
 
 const int KEY_NUM = 8;
 
+YsSoundPlayer::SoundData Controller::boingData;
+bool Controller::soundOK = false;
+YsSoundPlayer Controller::myPlayer;
+YsSoundPlayer::SoundData Controller::doorData;
+
 /*
 The default constructor of Controller class. Will initialize a controller class with level 0
 */
@@ -63,6 +68,8 @@ Controller::Controller(int _level): map(_level), player(map.startPosition.first,
 		}
 		inFile1.close();
 	}
+
+	loadSound();
 	
 }
 
@@ -94,6 +101,20 @@ bool Controller::pass()
 void Controller::setkeypressed(int i)
 {
 	Keys[i].isPressed = true;
+}
+
+void Controller::loadSound()
+{
+	char fName[256] = "boing_spring.wav";
+	char fName2[256] = "doorsound.wav";
+
+	if (YSOK != boingData.LoadWav(fName) || YSOK != doorData.LoadWav(fName2))
+	{
+		cout << "Failed to read sound file " << fName << endl;;
+		soundOK = false;
+	}
+	else
+		soundOK = true;
 }
 
 /*
@@ -130,6 +151,7 @@ void Controller::update(int code)
 						break;
 				}
 				Rocks[j].setPosition(rock_next_x, rock_next_y);
+				playSoundboing();
 				player.setPosition(intend_x, intend_y);
 			}
 		}
@@ -152,6 +174,7 @@ void Controller::update(int code)
 						break;
 				}
 				Rocks[j].setPosition(rock_next_x, rock_next_y);
+				playSoundboing();
 				player.setPosition(intend_x, intend_y);
 			}
 		}
@@ -174,6 +197,7 @@ void Controller::update(int code)
 						break;
 				}
 				Rocks[j].setPosition(rock_next_x, rock_next_y);
+				playSoundboing();
 				player.setPosition(intend_x, intend_y);
 			}
 		}
@@ -196,6 +220,7 @@ void Controller::update(int code)
 						break;
 				}
 				Rocks[j].setPosition(rock_next_x, rock_next_y);
+				playSoundboing();
 				player.setPosition(intend_x, intend_y);
 			}
 		}
@@ -216,9 +241,20 @@ void Controller::update(int code)
 				if (componentID == 'S')
 				{
 					if (level == 1) setkeypressed(7);
+					std::pair<int, int> loc1 = zombie.getPosition();
 					int* doorLoc = map.grid[nextX][nextY]->corrCompLoc;
+					// if there is a rock on the switch's door
+					bool doorhasObstacle = isObstacle(pos, doorLoc[0], doorLoc[1]);
+					
 					map.grid[nextX][nextY]->state = !map.grid[nextX][nextY]->state;
-					map.grid[doorLoc[0]][doorLoc[1]]->state = !map.grid[doorLoc[0]][doorLoc[1]]->state;
+					// if the player, zombie or rocks on the switch's door
+					if ((loc.first == doorLoc[0] && loc.second == doorLoc[1]) || (loc1.first == doorLoc[0] && loc1.second == doorLoc[1]) || doorhasObstacle)
+						;
+					else
+					{
+						map.grid[doorLoc[0]][doorLoc[1]]->state = !map.grid[doorLoc[0]][doorLoc[1]]->state;
+						playSounddoor();
+					}
 				}
 			}
 		}
@@ -302,8 +338,12 @@ void Controller::updateObjectInds() {
 				case 'b':
 				{
 					int* doorLoc = map.grid[i][j]->corrCompLoc;
-
+					bool doorPrevstate = map.grid[doorLoc[0]][doorLoc[1]]->state;
+					// if there is a rock on the button
 					bool hasObstacle = isObstacle(pos, i, j);
+					// if there is a rock on the button's door
+					bool doorhasObstacle = isObstacle(pos, doorLoc[0], doorLoc[1]);
+					// if the player, zombie or a rock on the button
 					if ((loc.first == i && loc.second == j)||(loc1.first == i && loc1.second == j) || hasObstacle) {
 						map.grid[i][j]->state = false;
 						map.grid[doorLoc[0]][doorLoc[1]]->state = false;
@@ -312,12 +352,25 @@ void Controller::updateObjectInds() {
 					else {
 						map.grid[i][j]->state = true;
 						map.grid[doorLoc[0]][doorLoc[1]]->state = true;
+						// if the player, zombie or a rock on the button's door
+						if ((loc.first == doorLoc[0] && loc.second == doorLoc[1]) || (loc1.first == doorLoc[0] && loc1.second == doorLoc[1]) || doorhasObstacle)
+							map.grid[doorLoc[0]][doorLoc[1]]->state = false;	
 					}
+
+					if (doorPrevstate != map.grid[doorLoc[0]][doorLoc[1]]->state)
+						playSounddoor();
 				}
 					break;
 				case 'd':
+				{
+					/*bool hasObstacle = isObstacle(pos, i, j);
+					bool doorPrevstate = map.grid[i][j]->state;
+					if ((loc.first == i && loc.second == j) || (loc1.first == i && loc1.second == j) || hasObstacle) {
+						map.grid[i][j]->state = false;
+					}*/
+				}
 					break;
-				case 's':
+				case 'S':
 					break;
 			}
 		}
