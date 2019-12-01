@@ -6,6 +6,7 @@ For test
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
+#include <string>
 #include "fssimplewindow.h"
 #include "ysglfontdata.h"
 #include "Camera3D.h"
@@ -174,8 +175,8 @@ int gamePlay(Camera3D& camera, OrbitingViewer& orbit, Controller* gameController
 		jokerman.setColorHSV(0, 0, 100);
 		jokerman.drawText("< HOME", 0, 790, 0.5, 0);
 		jokerman.drawText("RESET", 1030, 790, 0.5, 0);
-		//glColor3ub(255, 255, 255);
-		//DrawingUtilNG::drawRectangle(0, 730, 200, 50, false);
+		jokerman.drawText("LEVEL " + std::to_string(gameController->getcurrLevel()), 500, 60, 0.5, 0);
+		
 
 		FsSwapBuffers();
 		FsSleep(10);
@@ -264,11 +265,6 @@ int main(void) {
 		FsPollDevice();
 		glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
 
-		/*glColor3ub(255, 0, 0);
-		DrawingUtilNG::drawRectangle(0, 0, 800, 600, true);
-
-		FsSwapBuffers();
-		FsSleep(10);*/
 	}
 }
 
