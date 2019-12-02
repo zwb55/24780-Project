@@ -31,6 +31,7 @@ void TeachingKey::draw(ComicSansFont& comicsans)
 	}
 	glLineWidth(2);
 	DrawingUtilNG::drawRectangle(locX, locY, width, height, false);
+	comicsans.setColorRGB(255, 255, 255);
 	comicsans.drawText(text, locX + gapX, locY + gapY, scale, 0);
 }
 

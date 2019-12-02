@@ -317,6 +317,10 @@ void Controller::draw2D()
 		{
 			Keys[i].draw(comicsans);
 		}
+		comicsans.drawText("Move:", 950, 100, 0.2, 0);
+		comicsans.drawText("View Control:", 920, 155, 0.2, 0);
+		comicsans.drawText("Step on it:", 930, 215, 0.2, 0);
+		comicsans.drawText("Flip a Switch:", 920, 278, 0.2, 0);
 	}
 }
 
@@ -356,7 +360,7 @@ void Controller::updateObjectInds() {
 						if ((loc.first == doorLoc[0] && loc.second == doorLoc[1]) || (loc1.first == doorLoc[0] && loc1.second == doorLoc[1]) || doorhasObstacle)
 							map.grid[doorLoc[0]][doorLoc[1]]->state = false;	
 					}
-
+					// if the door changes its state
 					if (doorPrevstate != map.grid[doorLoc[0]][doorLoc[1]]->state)
 						playSounddoor();
 				}

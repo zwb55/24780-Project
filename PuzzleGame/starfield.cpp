@@ -26,7 +26,7 @@ void star::move(int width, int height) {
 }
 
 bool star::out(int width, int height) {
-	return CX<0 || CX>width || CY<0 || CY>height || z > 600;
+	return CX<0 || CX>width || CY<0 || CY>height || z > 3;
 }
 
 

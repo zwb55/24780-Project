@@ -1,0 +1,14 @@
+10 10 0 5
+0 0 0 0 0 0 0 0 0 0
+p p p p p p p d p p
+d 0 0 0 0 0 0 0 p p
+p 0 p S 0 7 p S 3 2 0 0 p p
+p 0 s p p p d e p p
+p 0 p S 8 3 p S 7 8 0 0 p p
+p 0 0 0 0 0 0 0 d p
+p 0 b 6 5 d p p p p p 0
+p 0 p 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0
+
+
+ 

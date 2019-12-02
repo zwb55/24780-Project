@@ -68,7 +68,7 @@ void Zombie::move(bool valid) {
 	
 	// do something
 	float dur = 10 * float( clock () - begin_time ) /  CLOCKS_PER_SEC;
-	if (dur < 1.5) {
+	if (dur < 3) {
 		return;
 	}
 	

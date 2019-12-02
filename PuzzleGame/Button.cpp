@@ -30,8 +30,8 @@ void Button::draw() {
 	else
 	{
 		height -= 1;
-		if (height <= 0)
-			height = 0;
+		if (height <= 1)
+			height = 1;
 		DrawingUtilNG::drawCube((px + 0.2) * Component::PIXEL_LENGTH, (py + 0.2) * Component::PIXEL_LENGTH, 0, (px + 0.8) * Component::PIXEL_LENGTH, (py + 0.8) * Component::PIXEL_LENGTH, height, false);
 
 	}
