@@ -18,12 +18,15 @@ For test
 #include "starfield.h"
 
 const int MAX_LEVEL = 9;
+const int BAR_LENGTH = 440;
 
 /* the 2 png using in start scene*/
 YsRawPngDecoder png[2];
 GLuint texId[2];
 void init_pngs();
 void drawStartScene(JokermanFont& jokerman, double& theta, double& delta);
+void drawLoading(JokermanFont& jokerman);
+void drawCongrats(JokermanFont& jokerman);
 
 /* load game bgm*/
 void bgmLoadSound(bool& bgmsoundOK, YsSoundPlayer::SoundData& bgmData);
@@ -222,7 +225,6 @@ int main(void) {
 	if (bgmsoundOK)
 		bgmPlayer.PlayBackground(bgmData, false);
 
-
 	JokermanFont jokerman;
 	init_pngs();
 
@@ -238,6 +240,7 @@ int main(void) {
 			locY > 620 && locY < 700)
 			|| returnCode != 0) {
 			// start a new game
+			drawLoading(jokerman);
 			gameController = new Controller(currLevel);
 			returnCode = gamePlay(camera, orbit, gameController,jokerman);
 			delete gameController;
@@ -246,6 +249,7 @@ int main(void) {
 		// update level according to returnCode
 		if (returnCode == 2 && currLevel == MAX_LEVEL) {
 			// can show some congrats, currently directly return to main window
+			drawCongrats(jokerman);
 			returnCode = 0;
 			currLevel = 1;
 		}
@@ -353,4 +357,101 @@ void bgmLoadSound(bool& bgmsoundOK, YsSoundPlayer::SoundData& bgmData)
 	}
 	else
 		bgmsoundOK = true;
+}
+
+void drawLoading(JokermanFont& jokerman) {
+	int currLength = 0;
+
+	// +5 means to ensure it can go through the whole bar
+	while (currLength <= BAR_LENGTH + 5) {
+		FsPollDevice();
+		glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+
+		int wid, hei;
+		FsGetWindowSize(wid, hei);
+
+		glViewport(0, 0, wid, hei);
+
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(0, (float)wid - 1, (float)hei - 1, 0, -1, 1);
+
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+
+		glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+		glColor4d(1.0, 1.0, 1.0, 1.0);   // this color will "tint" the image
+
+		// enable texture mapping
+		glEnable(GL_TEXTURE_2D);
+
+		// bind a texture to OpenGL primitives
+		glBindTexture(GL_TEXTURE_2D, texId[0]);
+
+		glBegin(GL_QUADS);
+
+		glTexCoord2d(0.0, 0.0);
+		glVertex2i(0, 0);
+		glTexCoord2d(1.0, 0.0);
+		glVertex2i(1200, 0);
+		glTexCoord2d(1.0, 1.0);
+		glVertex2i(1200, 800);
+		glTexCoord2d(0.0, 1.0);
+		glVertex2i(0, 800);
+
+		glEnd();
+
+		// turn off texture 
+		glDisable(GL_TEXTURE_2D);
+
+		jokerman.setColorHSV(0, 0, 100);
+		jokerman.drawText("Loading...", 380, 400, 1, 0);
+
+		// draw loading bar
+		glColor3ub(120, 120, 120);
+		DrawingUtilNG::drawRectangle(380, 460, BAR_LENGTH, 25, true);
+		glColor3ub(255, 255, 255);
+		DrawingUtilNG::drawRectangle(380, 460, min(currLength, BAR_LENGTH), 25, true);
+
+		FsSwapBuffers();
+		FsSleep(10);
+
+		// update length
+		currLength += DrawingUtilNG::getRandom(0, 6);
+	}
+}
+
+void drawCongrats(JokermanFont& jokerman) {
+	vector<star> Stars;
+	for (int i = 0; i < 600; i++)
+	{
+		star aStar;
+		aStar.initialize(1200, 800);
+		Stars.push_back(aStar);
+	}
+	int count = 0;
+
+	while (count < 240) {
+		count++;
+		int wid, hei;
+		FsGetWindowSize(wid, hei);
+
+		FsPollDevice();
+		glClear(GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
+
+		// draw star
+		for (auto& Star : Stars)
+		{
+			Star.move(wid, hei);
+			if (Star.out(wid, hei))
+				Star.initialize(wid, hei);
+			Star.draw();
+		}
+
+		jokerman.setColorHSV(0, 0, 100);
+		jokerman.drawText("Congratulation!", 220, 400, 1, 0);
+
+		FsSwapBuffers();
+		FsSleep(10);
+	}
 }

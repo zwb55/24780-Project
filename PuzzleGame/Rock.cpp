@@ -52,6 +52,7 @@ void Rock::draw()
 {
 	// Need to be improved.
 	glColor3ub(128, 128, 128);
-	DrawingUtilNG::drawCube(gridX * Component::PIXEL_LENGTH, gridY * Component::PIXEL_LENGTH, 0, (gridX + 1) * Component::PIXEL_LENGTH, (gridY + 1) * Component::PIXEL_LENGTH, 10, false);
+	int length = Component::PIXEL_LENGTH;
+	DrawingUtilNG::drawCube(gridX * length + 0.05 * length, gridY * length + 0.05 * length, 0, gridX * length + 0.95 * length, gridY * length + 0.95 * length, 10, false);
 
 }
