@@ -54,5 +54,28 @@ void Rock::draw()
 	glColor3ub(128, 128, 128);
 	int length = Component::PIXEL_LENGTH;
 	DrawingUtilNG::drawCube(gridX * length + 0.05 * length, gridY * length + 0.05 * length, 0, gridX * length + 0.95 * length, gridY * length + 0.95 * length, 10, false);
-
+	glColor3ub(0, 0, 0);
+	glLineWidth(3);
+	glBegin(GL_LINE_LOOP);
+	glVertex3d((gridX+0.05) * Component::PIXEL_LENGTH, (gridY+0.05) * Component::PIXEL_LENGTH, 0);
+	glVertex3d((gridX + 0.05)* Component::PIXEL_LENGTH, (gridY + 0.95) * Component::PIXEL_LENGTH, 0);
+	glVertex3d((gridX + 0.05) * Component::PIXEL_LENGTH, (gridY + 0.95) * Component::PIXEL_LENGTH, 10);
+	glVertex3d((gridX + 0.05)* Component::PIXEL_LENGTH, (gridY + 0.05)* Component::PIXEL_LENGTH, 10);
+	glEnd();
+	glBegin(GL_LINE_LOOP);
+	glVertex3d((gridX + 0.95) * Component::PIXEL_LENGTH, (gridY + 0.05) * Component::PIXEL_LENGTH, 0);
+	glVertex3d((gridX + 0.95) * Component::PIXEL_LENGTH, (gridY + 0.95) * Component::PIXEL_LENGTH, 0);
+	glVertex3d((gridX + 0.95) * Component::PIXEL_LENGTH, (gridY + 0.95) * Component::PIXEL_LENGTH, 10);
+	glVertex3d((gridX + 0.95) * Component::PIXEL_LENGTH, (gridY + 0.05) * Component::PIXEL_LENGTH, 10);
+	glEnd();
+	glBegin(GL_LINES);
+	glVertex3d((gridX + 0.05) * Component::PIXEL_LENGTH, (gridY + 0.05) * Component::PIXEL_LENGTH, 0);
+	glVertex3d((gridX + 0.95) * Component::PIXEL_LENGTH, (gridY + 0.05) * Component::PIXEL_LENGTH, 0);
+	glVertex3d((gridX + 0.05) * Component::PIXEL_LENGTH, (gridY + 0.95) * Component::PIXEL_LENGTH, 0);
+	glVertex3d((gridX + 0.95) * Component::PIXEL_LENGTH, (gridY + 0.95) * Component::PIXEL_LENGTH, 0);
+	glVertex3d((gridX + 0.05) * Component::PIXEL_LENGTH, (gridY + 0.95) * Component::PIXEL_LENGTH, 10);
+	glVertex3d((gridX + 0.95) * Component::PIXEL_LENGTH, (gridY + 0.95) * Component::PIXEL_LENGTH, 10);
+	glVertex3d((gridX + 0.05) * Component::PIXEL_LENGTH, (gridY + 0.05) * Component::PIXEL_LENGTH, 10);
+	glVertex3d((gridX + 0.95) * Component::PIXEL_LENGTH, (gridY + 0.05) * Component::PIXEL_LENGTH, 10);
+	glEnd();
 }

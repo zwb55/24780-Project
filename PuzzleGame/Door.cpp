@@ -29,6 +29,30 @@ void Door::draw() {
 		if (height >= Component::PIXEL_LENGTH * 2.)
 			height = Component::PIXEL_LENGTH * 2.;
 		DrawingUtilNG::drawCube(px * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, 0, (px + 1) * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, height, false);
+		glColor3ub(54, 54, 54);
+		glLineWidth(3);
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(px * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, 0);
+		glVertex3d(px * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, 0);
+		glVertex3d(px * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, height);
+		glVertex3d((px) * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, height);
+		glEnd();
+		glBegin(GL_LINE_LOOP);
+		glVertex3d((px+1) * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, 0);
+		glVertex3d((px+1) * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, 0);
+		glVertex3d((px+1) * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, height);
+		glVertex3d((px+1)* Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, height);
+		glEnd();
+		glBegin(GL_LINES);
+		glVertex3d(px * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, 0);
+		glVertex3d((px + 1) * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, 0);
+		glVertex3d(px * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, 0);
+		glVertex3d((px + 1) * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, 0);
+		glVertex3d(px * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, height);
+		glVertex3d((px + 1) * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, height);
+		glVertex3d((px)* Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, height);
+		glVertex3d((px + 1) * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, height);
+		glEnd();
 
 	}
 	else
@@ -39,7 +63,30 @@ void Door::draw() {
 			canLand = true;
 		}
 		DrawingUtilNG::drawCube(px * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, 0, (px + 1) * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, height, false);
-
+		glColor3ub(54, 54, 54);
+		glLineWidth(3);
+		glBegin(GL_LINE_LOOP);
+		glVertex3d(px * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, 0);
+		glVertex3d(px * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, 0);
+		glVertex3d(px * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, height);
+		glVertex3d((px)* Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, height);
+		glEnd();
+		glBegin(GL_LINE_LOOP);
+		glVertex3d((px + 1) * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, 0);
+		glVertex3d((px + 1) * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, 0);
+		glVertex3d((px + 1) * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, height);
+		glVertex3d((px + 1) * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, height);
+		glEnd();
+		glBegin(GL_LINES);
+		glVertex3d(px * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, 0);
+		glVertex3d((px + 1) * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, 0);
+		glVertex3d(px * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, 0);
+		glVertex3d((px + 1) * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, 0);
+		glVertex3d(px * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, height);
+		glVertex3d((px + 1) * Component::PIXEL_LENGTH, (py + 1) * Component::PIXEL_LENGTH, height);
+		glVertex3d((px)* Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, height);
+		glVertex3d((px + 1) * Component::PIXEL_LENGTH, py * Component::PIXEL_LENGTH, height);
+		glEnd();
 	}
 	// draw dark green part
 	glColor3ub(color[0], color[1], color[2]);

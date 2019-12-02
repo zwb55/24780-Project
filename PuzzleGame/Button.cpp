@@ -25,7 +25,11 @@ void Button::draw() {
 		if (height >= Component::PIXEL_LENGTH * 0.3)
 			height = Component::PIXEL_LENGTH * 0.3;
 		DrawingUtilNG::drawCube((px+0.2) * Component::PIXEL_LENGTH, (py+0.2) * Component::PIXEL_LENGTH, 0, (px + 0.8) * Component::PIXEL_LENGTH, (py + 0.8) * Component::PIXEL_LENGTH, height, false);
-
+		glPushMatrix();
+		glTranslated(0, 0, height);
+		glColor3ub(255, 0, 0);
+		DrawingUtilNG::drawRectangle((px + 0.25) * Component::PIXEL_LENGTH, (py + 0.25) * Component::PIXEL_LENGTH, 0.5 * Component::PIXEL_LENGTH, 0.5 * Component::PIXEL_LENGTH, true);
+		glPopMatrix();
 	}
 	else
 	{
@@ -33,7 +37,11 @@ void Button::draw() {
 		if (height <= 1)
 			height = 1;
 		DrawingUtilNG::drawCube((px + 0.2) * Component::PIXEL_LENGTH, (py + 0.2) * Component::PIXEL_LENGTH, 0, (px + 0.8) * Component::PIXEL_LENGTH, (py + 0.8) * Component::PIXEL_LENGTH, height, false);
-
+		glPushMatrix();
+		glTranslated(0, 0, height);
+		glColor3ub(255, 0, 0);
+		DrawingUtilNG::drawRectangle((px + 0.25) * Component::PIXEL_LENGTH, (py + 0.25) * Component::PIXEL_LENGTH, 0.5 * Component::PIXEL_LENGTH, 0.5 * Component::PIXEL_LENGTH, true);
+		glPopMatrix();
 	}
 	// draw dark green part
 	glColor3ub(color[0], color[1], color[2]);
