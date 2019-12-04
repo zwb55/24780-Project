@@ -1,11 +1,11 @@
 10 10 -2 -2
-0 0 0 0 b 7 0 0 0 0 0 0
-0 0 0 p p p 0 0 0 0
-0 b 8 0 p p p p p b 9 0 0 0
-0 0 p 0 p 0 p 0 0 0
-0 0 b 9 1 r r r b 9 2 0 0 e
-0 0 0 p p p 0 0 0 d
-0 0 b 9 3 p p p b 9 4 0 0 d
-0 0 p r p r p 0 0 d
-0 0 p r p r p 0 0 d
-0 0 p p s p p d d d
+0 0 0 p s p 0 0 0 0
+0 0 0 p p p 0 0 0 e
+0 0 0 p r p 0 0 0 p
+0 0 0 r p r 0 0 0 p
+0 0 0 p r p 0 0 0 p
+0 0 0 r p r 0 0 0 p
+0 0 0 p r p 0 0 0 p
+0 0 0 p p p 0 0 0 p
+0 0 0 0 b 7 1 p p d p p
+0 0 0 0 0 0 0 0 0 0 
